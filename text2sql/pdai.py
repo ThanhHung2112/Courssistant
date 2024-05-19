@@ -30,12 +30,12 @@ import pandas as pd
 
 import os
 
-os.environ["PANDASAI_API_KEY"] = "github ko cho push len"
+os.environ["PANDASAI_API_KEY"] = ""
 from pandasai import Agent
 from pandasai.llm import OpenAI
 
 llm = OpenAI(
-    api_token="github ko cho push len",
+    api_token="",
 )
 df = pd.read_csv("text.csv")
 agent = Agent(df)
