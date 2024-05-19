@@ -9,7 +9,6 @@ st.title("Courssistant")
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
 
-
 # Initialize or load chat history
 if "messages" not in st.session_state:
     st.session_state.messages = load_chat_history()
