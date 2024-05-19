@@ -4,7 +4,7 @@ from services.rasa_api import get_rasa_response
 from services.chat_histories import save_chat_history, load_chat_history
 
 
-st.title("Courssistant")
+st.title("Courssistant Page")
 
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
@@ -21,7 +21,7 @@ with st.sidebar:
 
 # Display chat messages in the sidebar
 with st.sidebar:
-    st.header("Chat with Rasa Bot")
+    st.header("Chat with Courssistant")
     
     chat_container = st.container()  # Create a container for chat messages
 
