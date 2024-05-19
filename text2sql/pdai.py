@@ -30,7 +30,7 @@ import pandas as pd
 
 import os
 
-os.environ["PANDASAI_API_KEY"] = ""
+# os.environ["PANDASAI_API_KEY"] = ""
 from pandasai import Agent
 from pandasai.llm import OpenAI
 
