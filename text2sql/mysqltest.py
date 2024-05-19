@@ -40,11 +40,11 @@ p = subprocess.Popen("ollama run duckdb-nsql",
                     shell=True)
 print(create_table_query)
 
-os.environ["PANDASAI_API_KEY"] = "github ko cho push len"
+os.environ["PANDASAI_API_KEY"] = ""
 
 
 llm = OpenAI(
-    api_token="github ko cho push len",
+    api_token="",
 )
 
 def QnAWithDuck(question, schema):
