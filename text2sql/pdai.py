@@ -30,16 +30,16 @@ import pandas as pd
 
 import os
 
-# os.environ["PANDASAI_API_KEY"] = ""
+os.environ["PANDASAI_API_KEY"] = "$2a$10$lwbP.akrhl.4fXNcDF/oQu5jcUArQwhXCXHNmcoTIYDQAsWEGeHn6"
 from pandasai import Agent
 from pandasai.llm import OpenAI
 
 llm = OpenAI(
-    api_token="",
+    api_token="sk-proj-R3zUuZVlUot3lkumt10LT3BlbkFJkYOT041i5sCtoqxHswr4",
 )
 df = pd.read_csv("text.csv")
 agent = Agent(df)
 agent.train(docs="He is the highest")
 
-response = agent.chat("Who is the customer with the highest credit limit?")
+response = agent.chat("How many customer?")
 print(response)

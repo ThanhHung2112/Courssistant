@@ -1,0 +1,831 @@
+2024-05-21 20:48:16 [INFO] Agent successfully trained on the data
+2024-05-21 20:48:16 [INFO] Question: answer with text or dataframe
+2024-05-21 20:48:16 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-21 20:48:16 [INFO] Prompt ID: 721b5e38-e534-4306-8705-e47d94d417c4
+2024-05-21 20:48:16 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 20:48:16 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 20:48:16 [INFO] Executing Step 1: CacheLookup
+2024-05-21 20:48:16 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 20:48:39 [INFO] Agent successfully trained on the data
+2024-05-21 20:48:39 [INFO] Question: show the top 5 customers with the highest credit limitanswer with text or dataframe
+2024-05-21 20:48:39 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-21 20:48:39 [INFO] Prompt ID: 97f7e1c2-100f-4ec2-8067-23a94f4bcf33
+2024-05-21 20:48:39 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 20:48:39 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 20:48:39 [INFO] Executing Step 1: CacheLookup
+2024-05-21 20:48:39 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 20:48:59 [ERROR] Request failed: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000019174DC6460>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/training-docs/docs/relevant-docs?query=%23%23%23+QUERY%0A+answer+with+text+or+dataframe&count=3 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000019174DC6460>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\pandasai\helpers\request.py", line 59, in make_request
+    response = requests.request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/training-docs/docs/relevant-docs?query=%23%23%23+QUERY%0A+answer+with+text+or+dataframe&count=3 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000019174DC6460>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+2024-05-21 20:48:59 [INFO] Querying without using training docs.
+2024-05-21 20:48:59 [INFO] Using prompt: <dataframe>
+dfs[0]:122x13
+customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,city,state,postalCode,country,salesRepEmployeeNumber,creditLimit
+206,Royale Belge,Shimamura,Julie,(1) 47.55.6555,Erling Skakkes gate 78,Crowther Way 23,San Diego,Québec,,Sweden,1621.0,59600.0
+339,Warburg Exchange,Donnermeyer,Janine ,6175558555,Software Engineering Center,SEC Oy,Bergen,Osaka,1734,Singapore,1504.0,98800.0
+448,"Asian Shopping Network, Co",Saveley,Jonas ,(071) 23 67 2555,Monitor Money Building,,Berlin,,8010,Spain,,64600.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+You can utilize these examples as a reference for generating code.
+
+Q: What are the top 5 countries by GDP?
+ A: 
+import pandas as pd
+
+df = dfs[0]
+
+# Convert GDP column to numeric values
+df['gdp'] = pd.to_numeric(df['gdp'])
+
+# Sort the DataFrame by GDP in descending order
+sorted_df = df.sort_values(by='gdp', ascending=False)
+
+# Get the top 5 countries by GDP
+top_5_countries = sorted_df.head(5)
+
+# Declare result variable
+result = {
+    "type": "dataframe",
+    "value": top_5_countries
+}
+
+
+
+
+### QUERY
+ answer with text or dataframe
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-21 20:48:59 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 20:49:31 [ERROR] Request failed: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000019174DE1040>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/training-docs/docs/relevant-docs?query=%23%23%23+QUERY%0A+show+the+top+5+customers+with+the+highest+credit+limitanswer+with+text+or+dataframe&count=3 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000019174DE1040>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\pandasai\helpers\request.py", line 59, in make_request
+    response = requests.request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/training-docs/docs/relevant-docs?query=%23%23%23+QUERY%0A+show+the+top+5+customers+with+the+highest+credit+limitanswer+with+text+or+dataframe&count=3 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000019174DE1040>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+2024-05-21 20:49:31 [INFO] Querying without using training docs.
+2024-05-21 20:49:31 [INFO] Using prompt: <dataframe>
+dfs[0]:5x13
+customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,city,state,postalCode,country,salesRepEmployeeNumber,creditLimit
+151,Mini Gifts Distributors Ltd.,Freyre,Diego ,1847676941,Grenzacherweg 237,Suite 400,Genève,NY,97562,Spain,1501,136800.0
+298,Muscle Machine Inc,Young,Susan,8196451049,"C/ Moralzarzal, 86",,San Rafael,CA,EC2 5NT,USA,1286,138500.0
+141,Euro+ Shopping Channel,Ashworth,Rachel,1951750700,Fauntleroy Circus,Suite 400,Manchester,,10022,UK,1370,141300.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+You can utilize these examples as a reference for generating code.
+
+Q: What are the top 5 countries by GDP?
+ A: 
+import pandas as pd
+
+df = dfs[0]
+
+# Convert GDP column to numeric values
+df['gdp'] = pd.to_numeric(df['gdp'])
+
+# Sort the DataFrame by GDP in descending order
+sorted_df = df.sort_values(by='gdp', ascending=False)
+
+# Get the top 5 countries by GDP
+top_5_countries = sorted_df.head(5)
+
+# Declare result variable
+result = {
+    "type": "dataframe",
+    "value": top_5_countries
+}
+
+
+
+
+### QUERY
+ show the top 5 customers with the highest credit limitanswer with text or dataframe
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-21 20:49:31 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 20:49:33 [INFO] Prompt used:
+            None
+            
+2024-05-21 20:49:33 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+df = dfs[0]
+
+# Get the top 5 countries by GDP
+top_5_countries = df['country'].value_counts().head(5)
+
+# Declare result variable
+result = {
+    "type": "dataframe",
+    "value": top_5_countries
+}
+            ```
+            
+2024-05-21 20:49:33 [INFO] Executing Step 4: CachePopulation
+2024-05-21 20:49:33 [INFO] Executing Step 5: CodeCleaning
+2024-05-21 20:49:34 [INFO] 
+Code running:
+```
+df = dfs[0]
+top_5_countries = df['country'].value_counts().head(5)
+result = {'type': 'dataframe', 'value': top_5_countries}
+        ```
+2024-05-21 20:49:34 [INFO] Executing Step 6: CodeExecution
+2024-05-21 20:49:34 [INFO] Executing Step 7: ResultValidation
+2024-05-21 20:49:34 [INFO] Answer: {'type': 'dataframe', 'value':          country
+USA           36
+Germany       13
+France        12
+Spain          7
+UK             5}
+2024-05-21 20:49:34 [INFO] Executing Step 8: ResultParsing
+2024-05-21 20:50:13 [ERROR] Request failed: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000019174DB4640>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/llm/chat (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000019174DB4640>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\pandasai\helpers\request.py", line 59, in make_request
+    response = requests.request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/llm/chat (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000019174DB4640>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+2024-05-21 20:50:13 [ERROR] Pipeline failed on step 3: Request failed: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/llm/chat (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000019174DB4640>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2024-05-21 20:53:03 [INFO] Agent successfully trained on the data
+2024-05-21 20:53:03 [INFO] Question: show top 5 customer with the highest credit limitanswer with text or dataframe
+2024-05-21 20:53:03 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-21 20:53:03 [INFO] Prompt ID: 93d15df6-8126-4f82-88c5-8e2c0873736c
+2024-05-21 20:53:03 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 20:53:03 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 20:53:03 [INFO] Executing Step 1: CacheLookup
+2024-05-21 20:53:03 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 20:53:45 [ERROR] Request failed: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001789F177C70>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/training-data/qa/relevant-qa?query=%23%23%23+QUERY%0A+show+top+5+customer+with+the+highest+credit+limitanswer+with+text+or+dataframe&count=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001789F177C70>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\pandasai\helpers\request.py", line 59, in make_request
+    response = requests.request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/training-data/qa/relevant-qa?query=%23%23%23+QUERY%0A+show+top+5+customer+with+the+highest+credit+limitanswer+with+text+or+dataframe&count=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001789F177C70>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+2024-05-21 20:53:45 [INFO] Querying without using training data.
+2024-05-21 20:53:46 [INFO] Using prompt: <dataframe>
+dfs[0]:5x13
+customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,city,state,postalCode,country,salesRepEmployeeNumber,creditLimit
+298,"Vida Sport, Ltd",Ashworth,Jeff,0897-034555,Fauntleroy Circus,,NYC,CA,28034,USA,1165,136800.0
+141,Muscle Machine Inc,Nelson,Diego ,(171) 555-1555,4092 Furth Circle,Suite 400,Madrid,,1203,Switzerland,1286,141300.0
+151,Euro+ Shopping Channel,Holz,Susan,4155551450,5677 Strong St.,Suite 400,Manchester,NY,EC2 5NT,Spain,1370,138500.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+Here are additional documents for reference. Feel free to use them to answer.
+He is the highest
+
+### QUERY
+ show top 5 customer with the highest credit limitanswer with text or dataframe
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-21 20:53:46 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 20:53:50 [INFO] Prompt used:
+            None
+            
+2024-05-21 20:53:50 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+df = dfs[0]
+
+# Sort the DataFrame by creditLimit in descending order
+sorted_df = df.sort_values(by='creditLimit', ascending=False)
+
+# Get the top 5 customers with the highest credit limit
+top_5_customers = sorted_df.head(5)
+
+# Declare result variable
+result = {
+    "type": "dataframe",
+    "value": top_5_customers
+}
+            ```
+            
+2024-05-21 20:53:50 [INFO] Executing Step 4: CachePopulation
+2024-05-21 20:53:50 [INFO] Executing Step 5: CodeCleaning
+2024-05-21 20:53:50 [INFO] 
+Code running:
+```
+df = dfs[0]
+sorted_df = df.sort_values(by='creditLimit', ascending=False)
+top_5_customers = sorted_df.head(5)
+result = {'type': 'dataframe', 'value': top_5_customers}
+        ```
+2024-05-21 20:53:50 [INFO] Executing Step 6: CodeExecution
+2024-05-21 20:53:50 [INFO] Executing Step 7: ResultValidation
+2024-05-21 20:53:50 [INFO] Answer: {'type': 'dataframe', 'value':    customerNumber                  customerName contactLastName contactFirstName           phone  ... state postalCode      country salesRepEmployeeNumber creditLimit
+0             141        Euro+ Shopping Channel          Freyre           Diego   (91) 555 94 44  ...  None      28034        Spain                   1370    227600.0
+1             124  Mini Gifts Distributors Ltd.          Nelson            Susan      4155551450  ...    CA      97562          USA                   1165    210500.0
+2             298               Vida Sport, Ltd            Holz           Mihael     0897-034555  ...  None       1203  Switzerland                   1702    141300.0
+3             151            Muscle Machine Inc           Young             Jeff      2125557413  ...    NY      10022          USA                   1286    138500.0
+4             187                AV Stores, Co.        Ashworth           Rachel  (171) 555-1555  ...  None    EC2 5NT           UK                   1501    136800.0
+
+[5 rows x 13 columns]}
+2024-05-21 20:53:50 [INFO] Executing Step 8: ResultParsing
+2024-05-21 20:55:55 [INFO] Agent successfully trained on the data
+2024-05-21 20:55:55 [INFO] Question: show 5 customer live in americaanswer with text or dataframe
+2024-05-21 20:55:55 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-21 20:55:55 [INFO] Prompt ID: 7b12ba75-5577-44ef-9b77-0cd502328285
+2024-05-21 20:55:55 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 20:55:55 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 20:55:55 [INFO] Executing Step 1: CacheLookup
+2024-05-21 20:55:55 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 20:56:38 [ERROR] Request failed: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x00000165B4695B20>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/training-data/qa/relevant-qa?query=%23%23%23+QUERY%0A+show+5+customer+live+in+americaanswer+with+text+or+dataframe&count=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000165B4695B20>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\pandasai\helpers\request.py", line 59, in make_request
+    response = requests.request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/training-data/qa/relevant-qa?query=%23%23%23+QUERY%0A+show+5+customer+live+in+americaanswer+with+text+or+dataframe&count=1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000165B4695B20>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+2024-05-21 20:56:38 [INFO] Querying without using training data.
+2024-05-21 20:56:39 [INFO] Using prompt: <dataframe>
+dfs[0]:36x13
+customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,city,state,postalCode,country,salesRepEmployeeNumber,creditLimit
+239,Classic Legends Inc.,Yoshido,Brian,5980810649,3086 Ingle Ln.,Suite 750,Philadelphia,NH,94217,USA,1188,71800.0
+161,Auto-Moto Classics Inc.,Thompson,Allen,8238139517,8489 Strong St.,Suite 400,New Bedford,CT,97561,USA,1286,11000.0
+168,Diecast Collectables,Salazar,Sue,9480359796,25593 South Bay Ln.,,Glendale,NY,97562,USA,1216,105000.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ show 5 customer live in americaanswer with text or dataframe
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-21 20:56:39 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 20:57:21 [ERROR] Request failed: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x00000165B45FFE50>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/llm/chat (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000165B45FFE50>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\pandasai\helpers\request.py", line 59, in make_request
+    response = requests.request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/llm/chat (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000165B45FFE50>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+2024-05-21 20:57:21 [ERROR] Pipeline failed on step 3: Request failed: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/llm/chat (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000165B45FFE50>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+2024-05-21 20:59:48 [INFO] Agent successfully trained on the data
+2024-05-21 20:59:48 [INFO] Question: answer with text or dataframe
+2024-05-21 20:59:48 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-21 20:59:48 [INFO] Prompt ID: 0aa98fab-f259-4cbd-bfa7-b36357681832
+2024-05-21 20:59:48 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 20:59:48 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 20:59:48 [INFO] Executing Step 1: CacheLookup
+2024-05-21 20:59:48 [INFO] Using cached response
+2024-05-21 20:59:48 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 20:59:48 [INFO] Executing Step 2: Skipping...
+2024-05-21 20:59:48 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 20:59:48 [INFO] Executing Step 3: Skipping...
+2024-05-21 20:59:48 [INFO] Executing Step 4: CachePopulation
+2024-05-21 20:59:48 [INFO] Executing Step 4: Skipping...
+2024-05-21 20:59:48 [INFO] Executing Step 5: CodeCleaning
+2024-05-21 20:59:48 [INFO] 
+Code running:
+```
+df = dfs[0]
+top_5_countries = df['country'].value_counts().head(5)
+result = {'type': 'dataframe', 'value': top_5_countries}
+        ```
+2024-05-21 20:59:48 [INFO] Executing Step 6: CodeExecution
+2024-05-21 20:59:48 [INFO] Executing Step 7: ResultValidation
+2024-05-21 20:59:48 [INFO] Answer: {'type': 'dataframe', 'value':      country
+USA       11}
+2024-05-21 20:59:48 [INFO] Executing Step 8: ResultParsing
+2024-05-21 21:03:22 [INFO] Agent successfully trained on the data
+2024-05-21 21:03:22 [INFO] Question: find 5 customer live in USAanswer with text or dataframe
+2024-05-21 21:03:22 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-21 21:03:22 [INFO] Prompt ID: e05700a9-95b2-45cd-9c63-f15d8793ba7c
+2024-05-21 21:03:22 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 21:03:22 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 21:03:22 [INFO] Executing Step 1: CacheLookup
+2024-05-21 21:03:22 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 21:04:35 [ERROR] Request failed: Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x000001A0A8D47460>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/training-docs/docs/relevant-docs?query=%23%23%23+QUERY%0A+find+5+customer+live+in+USAanswer+with+text+or+dataframe&count=3 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001A0A8D47460>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\pandasai\helpers\request.py", line 59, in make_request
+    response = requests.request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.domer.ai', port=443): Max retries exceeded with url: /api/training-docs/docs/relevant-docs?query=%23%23%23+QUERY%0A+find+5+customer+live+in+USAanswer+with+text+or+dataframe&count=3 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001A0A8D47460>: Failed to establish a new connection: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond'))
+
+2024-05-21 21:04:35 [INFO] Querying without using training docs.
+2024-05-21 21:04:35 [INFO] Using prompt: <dataframe>
+dfs[0]:5x13
+customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,city,state,postalCode,country,salesRepEmployeeNumber,creditLimit
+131,Signal Gift Stores,Nelson,Kwai,1886070647,5677 Strong St.,Suite 400,San Francisco,CA,94217,USA,1286,138500.0
+129,Mini Wheels Co.,Lee,Jeff,8709756253,8489 Strong St.,,Las Vegas,NV,97562,USA,1165,64600.0
+124,Mini Gifts Distributors Ltd.,King,Susan,7024184939,897 Long Airport Avenue,Suite 400,NYC,NY,83030,USA,1166,71800.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+You can utilize these examples as a reference for generating code.
+
+Q: What are the top 5 countries by GDP?
+ A: 
+import pandas as pd
+
+df = dfs[0]
+
+# Convert GDP column to numeric values
+df['gdp'] = pd.to_numeric(df['gdp'])
+
+# Sort the DataFrame by GDP in descending order
+sorted_df = df.sort_values(by='gdp', ascending=False)
+
+# Get the top 5 countries by GDP
+top_5_countries = sorted_df.head(5)
+
+# Declare result variable
+result = {
+    "type": "dataframe",
+    "value": top_5_countries
+}
+
+
+
+
+### QUERY
+ find 5 customer live in USAanswer with text or dataframe
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-21 21:04:35 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 21:04:48 [INFO] Prompt used:
+            None
+            
+2024-05-21 21:04:48 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+df = dfs[0]
+
+# Filter customers who live in USA
+usa_customers = df[df['country'] == 'USA'].head(5)
+
+# Declare result variable
+result = {
+    "type": "dataframe",
+    "value": usa_customers
+}
+            ```
+            
+2024-05-21 21:04:48 [INFO] Executing Step 4: CachePopulation
+2024-05-21 21:04:48 [INFO] Executing Step 5: CodeCleaning
+2024-05-21 21:04:48 [INFO] 
+Code running:
+```
+df = dfs[0]
+usa_customers = df[df['country'] == 'USA'].head(5)
+result = {'type': 'dataframe', 'value': usa_customers}
+        ```
+2024-05-21 21:04:48 [INFO] Executing Step 6: CodeExecution
+2024-05-21 21:04:48 [INFO] Executing Step 7: ResultValidation
+2024-05-21 21:04:48 [INFO] Answer: {'type': 'dataframe', 'value':    customerNumber                  customerName contactLastName contactFirstName       phone  ... state postalCode country salesRepEmployeeNumber creditLimit
+0             112            Signal Gift Stores            King             Jean  7025551838  ...    NV      83030     USA                   1166     71800.0
+1             124  Mini Gifts Distributors Ltd.          Nelson            Susan  4155551450  ...    CA      97562     USA                   1165    210500.0
+2             129               Mini Wheels Co.          Murphy            Julie  6505555787  ...    CA      94217     USA                   1165     64600.0
+3             131             Land of Toys Inc.             Lee             Kwai  2125557818  ...    NY      10022     USA                   1323    114900.0
+4             151            Muscle Machine Inc           Young             Jeff  2125557413  ...    NY      10022     USA                   1286    138500.0
+
+[5 rows x 13 columns]}
+2024-05-21 21:04:48 [INFO] Executing Step 8: ResultParsing
