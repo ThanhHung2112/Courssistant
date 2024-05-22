@@ -40,11 +40,11 @@ p = subprocess.Popen("ollama run duckdb-nsql",
                     shell=True)
 print(create_table_query)
 
-os.environ["PANDASAI_API_KEY"] = ""
+os.environ["PANDASAI_API_KEY"] = "$2a$10$lwbP.akrhl.4fXNcDF/oQu5jcUArQwhXCXHNmcoTIYDQAsWEGeHn6"
 
 
 llm = OpenAI(
-    api_token="",
+    api_token="sk-proj-R3zUuZVlUot3lkumt10LT3BlbkFJkYOT041i5sCtoqxHswr4",
 )
 
 def QnAWithDuck(question, schema):
@@ -72,8 +72,9 @@ while True:
         agent = Agent(df)
         agent.train(docs="He is the highest")
 
-        response = agent.chat(question + "answer me with text")
+        response = agent.chat(question + "answer with text or dataframe")
         print(response)
+        print(type(response))
     except:
         print("an error orcur")
         
