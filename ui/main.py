@@ -1,6 +1,7 @@
 import streamlit as st
 from services.rasa_api import get_rasa_response
 from services.chat_histories import save_chat_history, load_chat_history
+from services.text2sql import get_connection, QnAWithDuck, table_schema
 import pandas as pd
 import numpy as np
 import db_config
@@ -75,8 +76,6 @@ with st.sidebar:
 
         
 def display_course_grid(df):
-    st.title("Yattaaaaaaaaa")
-
     card_height = 300
 
     num_columns = 3
@@ -89,74 +88,33 @@ def display_course_grid(df):
         for col, (index, item) in zip(cols, row.iterrows()):
             col.markdown(f"""
             <div style="margin-bottom: 20px;">
-                <div style="border: 2px solid #4CAF50; padding: 10px; border-radius: 10px; height: {card_height}px;">
-                    <h2 style="color: #4CAF50;">{item['contactLastName']}</h2>
-                    <p><strong>Name:</strong> {item['contactFirstName']}</p>
-                    <p><strong>Country:</strong> {item['country']}</p>
+                <div style="border: 2px solid #000; padding: 10px; border-radius: 10px; background-color: #fff; height: {card_height}px;">
+                    <h2 style="color: #000;">{item['contactLastName']}</h2>
+                    <p style="color: #000;"><strong>Name:</strong> {item['contactFirstName']}</p>
+                    <p style="color: #000;"><strong>Country:</strong> {item['country']}</p>
                 </div>
             </div>
             """, unsafe_allow_html=True)
 
-question = st.text_input("QnA with Duck", "")
+# userInput = "how many customer"
+def QnA_SQL(userInput):
+    engineSQL = get_connection()
+    create_table_query = table_schema("customers", engineSQL)
+    queryExecutable = QnAWithDuck(userInput, create_table_query)
+    df = pd.read_sql_query(sql = text(queryExecutable), con = engineSQL.connect())
+    print(df)
+    df.to_csv("df_display.csv")
+    return df
 
-def get_connection():
-    return create_engine(
-        url="mysql+pymysql://{0}:{1}@{2}:{3}/{4}".format(
-            db_config.db_user, db_config.db_password, db_config.db_host, db_config.db_port, db_config.db_name
-        )
-    )
+st.title("Yattaaaaaaaaa")
 
-engine = get_connection()
-table_name = "customers"
-with engine.connect() as connection:
-    query = text("DESCRIBE {}".format(table_name))
-    result = connection.execute(query)
-    table_structure = result.fetchall()
-
-create_table_query = "CREATE TABLE {} (".format(table_name)
-
-
-for column in table_structure:
-    column_name = column[0]
-    column_type = column[1]
-    create_table_query += "{} {}, ".format(column_name, column_type)
-
-create_table_query = create_table_query[:-2] + ")"
-
-
-
-os.environ["PANDASAI_API_KEY"] = "$2a$10$lwbP.akrhl.4fXNcDF/oQu5jcUArQwhXCXHNmcoTIYDQAsWEGeHn6"
-
-
-llm = OpenAI(
-    api_token="sk-proj-R3zUuZVlUot3lkumt10LT3BlbkFJkYOT041i5sCtoqxHswr4",
-)
-
-def QnAWithDuck(question, schema):
-    current = time.time()
-    p = subprocess.Popen("ollama run duckdb-nsql",
-                    stdin=subprocess.PIPE,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    shell=True)
-    promt_input = schema + question + "(response with all field from database)"
-    out, _ = p.communicate(input=promt_input.encode())
-    final_query = out.decode('utf-8').strip()    
-    final_query = final_query.split('\n', 1)[0].strip()
-    print(f'get query {final_query} in {time.time() -  current}')
-    return final_query
-
-executable_query = QnAWithDuck(question, create_table_query)
-print(executable_query)
-
-df_agent = pd.read_sql_query(sql = text(executable_query), con = engine.connect())
-print(df_agent)
-df_agent.to_csv("df_display.csv")
-
-
-df = pd.read_csv("df_display.csv")
-st.dataframe(df.iloc[:, :3])
-display_course_grid(df)
+# df = pd.read_csv("df_display.csv")
+userInputs = ["find all customer live in australia", "find all customer live in america", "find the customer with the highest credit limit"]
+for userInput in userInputs:
+    st.write(userInput)
+    st.empty()
+    df = QnA_SQL(userInput)
+    display_course_grid(df)
 
 # try:
 #     agent = Agent(df_agent)
@@ -166,4 +124,3 @@ display_course_grid(df)
 #     print(type(response))
 # except:
 #     print("error")
-
