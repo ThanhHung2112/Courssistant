@@ -1721,3 +1721,416 @@ result = {'type': 'dataframe', 'value': df}
 
 [122 rows x 13 columns]}
 2024-05-20 14:27:10 [INFO] Executing Step 8: ResultParsing
+2024-05-23 18:44:03 [INFO] Agent successfully trained on the data
+2024-05-23 18:44:04 [INFO] Question: how many customer answer with text or dataframe
+2024-05-23 18:44:04 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-23 18:44:04 [INFO] Prompt ID: 6476a79f-a226-4bd0-af29-2919622eb627
+2024-05-23 18:44:04 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 18:44:04 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 18:44:04 [INFO] Executing Step 1: CacheLookup
+2024-05-23 18:44:04 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 18:44:07 [INFO] Using prompt: <dataframe>
+dfs[0]:122x13
+customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,city,state,postalCode,country,salesRepEmployeeNumber,creditLimit
+240,"Clover Collections, Co.",Leong,Renate ,3106947784,"Gran Vía, 1",,Hatfield,CA,B-6000,Spain,,97900.0
+161,Diecast Classics Inc.,Rodriguez,Kwai,8110231568,Monitor Money Building,Alessandro Volta 16,Brisbane,,75508,Italy,1165.0,210500.0
+187,Toys4GrownUps.com,Murphy,Peter ,+81 8599410600,Keskuskatu 45,PR 334 Sentrum,Burbank,CT,,Canada,1611.0,90500.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+You can utilize these examples as a reference for generating code.
+
+Q: What are the top 5 countries by GDP?
+ A: 
+import pandas as pd
+
+df = dfs[0]
+
+# Convert GDP column to numeric values
+df['gdp'] = pd.to_numeric(df['gdp'])
+
+# Sort the DataFrame by GDP in descending order
+sorted_df = df.sort_values(by='gdp', ascending=False)
+
+# Get the top 5 countries by GDP
+top_5_countries = sorted_df.head(5)
+
+# Declare result variable
+result = {
+    "type": "dataframe",
+    "value": top_5_countries
+}
+
+
+
+
+### QUERY
+ how many customer answer with text or dataframe
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-23 18:44:07 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 18:44:10 [INFO] Prompt used:
+            None
+            
+2024-05-23 18:44:10 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Extract the first dataframe from dfs list
+df = dfs[0]
+
+# Count the number of customers who answered with text or dataframe
+num_customers_answered_text_or_dataframe = df[(df['contactFirstName'].str.contains(' ') & df['phone'].str.startswith('+')) | (df['country'] == 'Spain')].shape[0]
+
+# Declare result variable
+result = {
+    "type": "number",
+    "value": num_customers_answered_text_or_dataframe
+}
+            ```
+            
+2024-05-23 18:44:10 [INFO] Executing Step 4: CachePopulation
+2024-05-23 18:44:10 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 18:44:10 [INFO] 
+Code running:
+```
+df = dfs[0]
+num_customers_answered_text_or_dataframe = df[df['contactFirstName'].str.contains(' ') & df['phone'].str.startswith('+') | (df['country'] == 'Spain')].shape[0]
+result = {'type': 'number', 'value': num_customers_answered_text_or_dataframe}
+        ```
+2024-05-23 18:44:10 [INFO] Executing Step 6: CodeExecution
+2024-05-23 18:44:10 [INFO] Executing Step 7: ResultValidation
+2024-05-23 18:44:10 [INFO] Answer: {'type': 'number', 'value': 8}
+2024-05-23 18:44:10 [INFO] Executing Step 8: ResultParsing
+2024-05-23 18:44:58 [INFO] Agent successfully trained on the data
+2024-05-23 18:44:58 [INFO] Question: how many customer answer with text or dataframe
+2024-05-23 18:44:58 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-23 18:44:58 [INFO] Prompt ID: b6bae589-e3b1-47b2-a05b-eb23b9b8932d
+2024-05-23 18:44:58 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 18:44:58 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 18:44:58 [INFO] Executing Step 1: CacheLookup
+2024-05-23 18:44:58 [INFO] Using cached response
+2024-05-23 18:44:58 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 18:44:58 [INFO] Executing Step 2: Skipping...
+2024-05-23 18:44:58 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 18:44:58 [INFO] Executing Step 3: Skipping...
+2024-05-23 18:44:58 [INFO] Executing Step 4: CachePopulation
+2024-05-23 18:44:58 [INFO] Executing Step 4: Skipping...
+2024-05-23 18:44:58 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 18:44:58 [INFO] 
+Code running:
+```
+df = dfs[0]
+num_customers_answered_text_or_dataframe = df[df['contactFirstName'].str.contains(' ') & df['phone'].str.startswith('+') | (df['country'] == 'Spain')].shape[0]
+result = {'type': 'number', 'value': num_customers_answered_text_or_dataframe}
+        ```
+2024-05-23 18:44:58 [INFO] Executing Step 6: CodeExecution
+2024-05-23 18:44:58 [INFO] Executing Step 7: ResultValidation
+2024-05-23 18:44:58 [INFO] Answer: {'type': 'number', 'value': 8}
+2024-05-23 18:44:58 [INFO] Executing Step 8: ResultParsing
+2024-05-23 18:45:26 [INFO] Agent successfully trained on the data
+2024-05-23 18:45:26 [INFO] Question: show all customeranswer with text or dataframe
+2024-05-23 18:45:26 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-23 18:45:26 [INFO] Prompt ID: e60edad2-3d68-4449-8989-b2d05e227fe1
+2024-05-23 18:45:26 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 18:45:26 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 18:45:26 [INFO] Executing Step 1: CacheLookup
+2024-05-23 18:45:26 [INFO] Using cached response
+2024-05-23 18:45:26 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 18:45:26 [INFO] Executing Step 2: Skipping...
+2024-05-23 18:45:26 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 18:45:26 [INFO] Executing Step 3: Skipping...
+2024-05-23 18:45:26 [INFO] Executing Step 4: CachePopulation
+2024-05-23 18:45:26 [INFO] Executing Step 4: Skipping...
+2024-05-23 18:45:26 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 18:45:26 [INFO] 
+Code running:
+```
+df = dfs[0]
+result = {'type': 'dataframe', 'value': df}
+        ```
+2024-05-23 18:45:26 [INFO] Executing Step 6: CodeExecution
+2024-05-23 18:45:26 [INFO] Executing Step 7: ResultValidation
+2024-05-23 18:45:26 [INFO] Answer: {'type': 'dataframe', 'value':      customerNumber                    customerName contactLastName contactFirstName  ... postalCode      country salesRepEmployeeNumber creditLimit
+0               103               Atelier graphique         Schmitt          Carine   ...      44000       France                 1370.0     21000.0
+1               112              Signal Gift Stores            King             Jean  ...      83030          USA                 1166.0     71800.0
+2               114      Australian Collectors, Co.        Ferguson            Peter  ...       3004    Australia                 1611.0    117300.0
+3               119               La Rochelle Gifts         Labrune          Janine   ...      44000       France                 1370.0    118200.0
+4               121              Baane Mini Imports      Bergulfsen           Jonas   ...       4110       Norway                 1504.0     81700.0
+..              ...                             ...             ...              ...  ...        ...          ...                    ...         ...
+117             486    Motor Mint Distributors Inc.         Salazar             Rosa  ...      71270          USA                 1323.0     72600.0
+118             487        Signal Collectibles Ltd.          Taylor              Sue  ...      94217          USA                 1165.0     60300.0
+119             489  Double Decker Gift Stores, Ltd           Smith          Thomas   ...    WA1 1DP           UK                 1501.0     43300.0
+120             495            Diecast Collectables          Franco          Valarie  ...      51003          USA                 1188.0     85100.0
+121             496               Kelly's Gift Shop         Snowden             Tony  ...       None  New Zealand                 1612.0    110000.0
+
+[122 rows x 13 columns]}
+2024-05-23 18:45:26 [INFO] Executing Step 8: ResultParsing
+2024-05-23 18:46:08 [INFO] Agent successfully trained on the data
+2024-05-23 18:46:08 [INFO] Question: how many customer live in USAanswer with text or dataframe
+2024-05-23 18:46:08 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-23 18:46:08 [INFO] Prompt ID: 291bab16-1424-4940-b04b-7e879a81801a
+2024-05-23 18:46:08 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 18:46:09 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 18:46:09 [INFO] Executing Step 1: CacheLookup
+2024-05-23 18:46:09 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 18:46:11 [INFO] Using prompt: <dataframe>
+dfs[0]:36x13
+customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,city,state,postalCode,country,salesRepEmployeeNumber,creditLimit
+157,"Men 'R' US Retailers, Ltd.",King,William,0809671799,8616 Spinnaker Dr.,Suite 750,New Haven,CT,70267,USA,1166,114200.0
+124,The Sharp Gifts Warehouse,Frick,Wing,4762739570,7635 Spinnaker Dr.,,Los Angeles,CA,92561,USA,1216,43000.0
+286,Boards & Toys Co.,Yoshido,Jeff,0009689494,3675 Furth Circle,Suite 200,Las Vegas,PA,62005,USA,1286,114900.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+You can utilize these examples as a reference for generating code.
+
+Q: What are the top 5 countries by GDP?
+ A: 
+import pandas as pd
+
+df = dfs[0]
+
+# Convert GDP column to numeric values
+df['gdp'] = pd.to_numeric(df['gdp'])
+
+# Sort the DataFrame by GDP in descending order
+sorted_df = df.sort_values(by='gdp', ascending=False)
+
+# Get the top 5 countries by GDP
+top_5_countries = sorted_df.head(5)
+
+# Declare result variable
+result = {
+    "type": "dataframe",
+    "value": top_5_countries
+}
+
+
+
+
+### QUERY
+ how many customer live in USAanswer with text or dataframe
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-23 18:46:11 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 18:46:15 [INFO] Prompt used:
+            None
+            
+2024-05-23 18:46:15 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+df = dfs[0]
+
+# Filter the DataFrame for customers living in the USA
+usa_customers = df[df['country'] == 'USA']
+
+# Count the number of customers living in the USA
+num_usa_customers = usa_customers.shape[0]
+
+# Declare result variable
+result = {
+    "type": "string",
+    "value": f"The number of customers living in the USA is: {num_usa_customers}"
+}
+            ```
+            
+2024-05-23 18:46:15 [INFO] Executing Step 4: CachePopulation
+2024-05-23 18:46:15 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 18:46:15 [INFO] 
+Code running:
+```
+df = dfs[0]
+usa_customers = df[df['country'] == 'USA']
+num_usa_customers = usa_customers.shape[0]
+result = {'type': 'string', 'value': f'The number of customers living in the USA is: {num_usa_customers}'}
+        ```
+2024-05-23 18:46:15 [INFO] Executing Step 6: CodeExecution
+2024-05-23 18:46:15 [INFO] Executing Step 7: ResultValidation
+2024-05-23 18:46:15 [INFO] Answer: {'type': 'string', 'value': 'The number of customers living in the USA is: 36'}
+2024-05-23 18:46:15 [INFO] Executing Step 8: ResultParsing
+2024-05-23 18:47:03 [INFO] Agent successfully trained on the data
+2024-05-23 18:47:03 [INFO] Question: show all customer live in USAanswer with text or dataframe
+2024-05-23 18:47:03 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-23 18:47:03 [INFO] Prompt ID: 864fda3b-069a-4392-8a6e-fb8bc65c8571
+2024-05-23 18:47:03 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 18:47:03 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 18:47:03 [INFO] Executing Step 1: CacheLookup
+2024-05-23 18:47:03 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 18:47:05 [INFO] Using prompt: <dataframe>
+dfs[0]:36x13
+customerNumber,customerName,contactLastName,contactFirstName,phone,addressLine1,addressLine2,city,state,postalCode,country,salesRepEmployeeNumber,creditLimit
+339,Corporate Gift Ideas Co.,Chandler,Jerry,3398320014,7586 Pompton St.,Suite 750,Pasadena,NY,90003,USA,1286,138500.0
+319,Classic Legends Inc.,Tseng,Julie,7564728184,3086 Ingle Ln.,Suite 400,San Diego,NV,51247,USA,1188,81100.0
+205,Signal Gift Stores,Brown,Wing,1393075626,25593 South Bay Ln.,,New Haven,MA,50553,USA,1216,57700.0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+You can utilize these examples as a reference for generating code.
+
+Q: What are the top 5 countries by GDP?
+ A: 
+import pandas as pd
+
+df = dfs[0]
+
+# Convert GDP column to numeric values
+df['gdp'] = pd.to_numeric(df['gdp'])
+
+# Sort the DataFrame by GDP in descending order
+sorted_df = df.sort_values(by='gdp', ascending=False)
+
+# Get the top 5 countries by GDP
+top_5_countries = sorted_df.head(5)
+
+# Declare result variable
+result = {
+    "type": "dataframe",
+    "value": top_5_countries
+}
+
+
+
+
+### QUERY
+ show all customer live in USAanswer with text or dataframe
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-23 18:47:05 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 18:47:08 [INFO] Prompt used:
+            None
+            
+2024-05-23 18:47:08 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Filter customers who live in USA
+usa_customers = dfs[0][dfs[0]['country'] == 'USA']
+
+# Display USA customers
+result = {
+    "type": "dataframe",
+    "value": usa_customers
+}
+            ```
+            
+2024-05-23 18:47:08 [INFO] Executing Step 4: CachePopulation
+2024-05-23 18:47:08 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 18:47:08 [INFO] 
+Code running:
+```
+usa_customers = dfs[0][dfs[0]['country'] == 'USA']
+result = {'type': 'dataframe', 'value': usa_customers}
+        ```
+2024-05-23 18:47:08 [INFO] Executing Step 6: CodeExecution
+2024-05-23 18:47:08 [INFO] Executing Step 7: ResultValidation
+2024-05-23 18:47:08 [INFO] Answer: {'type': 'dataframe', 'value':     customerNumber                  customerName contactLastName contactFirstName       phone  ... state postalCode country salesRepEmployeeNumber creditLimit
+0              112            Signal Gift Stores            King             Jean  7025551838  ...    NV      83030     USA                   1166     71800.0
+1              124  Mini Gifts Distributors Ltd.          Nelson            Susan  4155551450  ...    CA      97562     USA                   1165    210500.0
+2              129               Mini Wheels Co.          Murphy            Julie  6505555787  ...    CA      94217     USA                   1165     64600.0
+3              131             Land of Toys Inc.             Lee             Kwai  2125557818  ...    NY      10022     USA                   1323    114900.0
+4              151            Muscle Machine Inc           Young             Jeff  2125557413  ...    NY      10022     USA                   1286    138500.0
+5              157         Diecast Classics Inc.           Leong           Kelvin  2155551555  ...    PA      70267     USA                   1216    100600.0
+6              161          Technics Stores Inc.       Hashimoto             Juri  6505556809  ...    CA      94217     USA                   1165     84600.0
+7              168        American Souvenirs Inc          Franco            Keith  2035557845  ...    CT      97823     USA                   1286         0.0
+8              173    Cambridge Collectables Co.           Tseng            Jerry  6175555555  ...    MA      51247     USA                   1188     43400.0
+9              175               Gift Depot Inc.            King            Julie  2035552570  ...    CT      97562     USA                   1323     84300.0
+10             181               Vitachrome Inc.           Frick          Michael  2125551500  ...    NY      10022     USA                   1286     76400.0
+11             198       Auto-Moto Classics Inc.          Taylor           Leslie  6175558428  ...    MA      58339     USA                   1216     23000.0
+12             204      Online Mini Collectables         Barajas           Miguel  6175557555  ...    MA      58339     USA                   1188     68700.0
+13             205             Toys4GrownUps.com           Young            Julie  6265557265  ...    CA      90003     USA                   1166     90700.0
+14             219             Boards & Toys Co.           Young             Mary  3105552373  ...    CA      92561     USA                   1166     11000.0
+15             239  Collectable Mini Designs Co.        Thompson          Valarie  7605558146  ...    CA      91217     USA                   1166    105000.0
+16             286          Marta's Replicas Co.       Hernandez            Marta  6175558555  ...    MA      51247     USA                   1216    123700.0
+17             319                 Mini Classics           Frick            Steve  9145554562  ...    NY      24067     USA                   1323    102700.0
+18             320           Mini Creations Ltd.           Huang             Wing  5085559555  ...    MA      50553     USA                   1188     94500.0
+19             321      Corporate Gift Ideas Co.           Brown            Julie  6505551386  ...    CA      94217     USA                   1165    105000.0
+20             328       Tekni Collectables Inc.           Brown          William  2015559350  ...    NJ      94019     USA                   1323     43000.0
+21             339       Classic Gift Ideas, Inc       Cervantes        Francisca  2155554695  ...    PA      71270     USA                   1188     81100.0
+22             347    Men 'R' US Retailers, Ltd.        Chandler            Brian  2155554369  ...    CA      91003     USA                   1166     57700.0
+23             362             Gifts4AllAges.com         Yoshido             Juri  6175559555  ...    MA      51003     USA                   1216     41900.0
+24             363  Online Diecast Creations Co.           Young          Dorothy  6035558647  ...    NH      62005     USA                   1216    114200.0
+25             379    Collectables For Less Inc.          Nelson            Allen  6175558555  ...    MA      58339     USA                   1188     70700.0
+26             424          Classic Legends Inc.       Hernandez            Maria  2125558493  ...    NY      10022     USA                   1286     67500.0
+27             447              Gift Ideas Corp.           Lewis              Dan  2035554407  ...    CT      97561     USA                   1323     49700.0
+28             450     The Sharp Gifts Warehouse           Frick              Sue  4085553659  ...    CA      94217     USA                   1165     77600.0
+29             455              Super Scale Inc.          Murphy           Leslie  2035559545  ...    CT      97823     USA                   1286     95400.0
+30             456               Microscale Inc.            Choi               Yu  2125551957  ...    NY      10022     USA                   1286     39800.0
+31             462              FunGiftIdeas.com         Benitez          Violeta  5085552555  ...    MA      50553     USA                   1216     85800.0
+32             475   West Coast Collectables Co.        Thompson            Steve  3105553722  ...    CA      94019     USA                   1166     55400.0
+33             486  Motor Mint Distributors Inc.         Salazar             Rosa  2155559857  ...    PA      71270     USA                   1323     72600.0
+34             487      Signal Collectibles Ltd.          Taylor              Sue  4155554312  ...    CA      94217     USA                   1165     60300.0
+35             495          Diecast Collectables          Franco          Valarie  6175552555  ...    MA      51003     USA                   1188     85100.0
+
+[36 rows x 13 columns]}
+2024-05-23 18:47:08 [INFO] Executing Step 8: ResultParsing
