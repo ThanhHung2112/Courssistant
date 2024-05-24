@@ -1,7 +1,19 @@
 import streamlit as st
-
 from services.rasa_api import get_rasa_response
 from services.chat_histories import save_chat_history, load_chat_history
+from components.course_grid import QnA_SQL, display_course_grid
+import pandas as pd
+import numpy as np
+from sqlalchemy import create_engine, text
+import os
+import subprocess
+import time
+from subprocess import Popen, PIPE
+import re
+from pandasai import Agent
+from pandasai.llm import OpenAI
+
+
 
 
 st.title("Courssistant Page")
@@ -59,3 +71,16 @@ with st.sidebar:
 
         # Save chat history after each interaction
         save_chat_history(st.session_state.messages)
+
+
+st.title("Yattaaaaaaaaa")
+userInputs = ["who is the customer with the highest credit limit"]
+# userInputs = ["find all customer live in australia", "find all customer live in america", "find the customer with the highest credit limit"]
+zone = st.empty()
+for userInput in userInputs:
+    df, response = QnA_SQL(userInput)
+    with zone.container():
+        st.write(response)
+        display_course_grid(df)
+        
+
