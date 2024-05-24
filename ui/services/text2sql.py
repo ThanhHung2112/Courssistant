@@ -1,4 +1,3 @@
-import db_config
 from sqlalchemy import create_engine, text
 import os
 import subprocess
@@ -12,7 +11,7 @@ from pandasai.llm import OpenAI
 def get_connection():
     return create_engine(
         url="mysql+pymysql://{0}:{1}@{2}:{3}/{4}".format(
-            db_config.db_user, db_config.db_password, db_config.db_host, db_config.db_port, db_config.db_name
+            "root", "", "localhost", "3306", "duck_demo"
         )
     )
 
@@ -54,27 +53,37 @@ def QnAWithDuck(question, schema):
                     stderr=subprocess.PIPE,
                     shell=True)
     promt_input = schema + question + "give me all field of query result"
+    print("ducking")
     out, _ = p.communicate(input=promt_input.encode())
     final_query = out.decode('utf-8').strip()    
     final_query = final_query.split('\n', 1)[0].strip()
     print(f'get query {final_query} in {time.time() -  current}')
     return final_query
 
-# while True:
-#     question = input("query : ")
-#     executable_query = QnAWithDuck(question, create_table_query)
-#     print(executable_query)
-#     try:
-#         df = pd.read_sql_query(sql = text(executable_query), con = engine.connect())
-#         print(df)
-#         df.to_csv("text.csv")
-#         agent = Agent(df)
-#         agent.train(docs="He is the highest")
+def QnAWithPanda(df, question):
+    os.environ["PANDASAI_API_KEY"] = "$2a$10$lwbP.akrhl.4fXNcDF/oQu5jcUArQwhXCXHNmcoTIYDQAsWEGeHn6"
+    agent = Agent(df)
+    print("training pandas")
+    agent.train(docs="He is the highest")
+    print("panding")
+    response = agent.chat(question)
+    print(response)
+    print(type(response))
+    response_text = ""
 
-#         response = agent.chat(question + "answer with text or dataframe")
-#         print(response)
-#         print(type(response))
-#     except:
-#         print("an error orcur")
+    if isinstance(response, pd.DataFrame):
+        response_text = "here is the result"
+    elif isinstance(response, str):
+        if "Request failed" in response:
+            response_text = "hehe, guess what ?"
+        else:
+            response_text = response
+    elif isinstance(response, int):
+        response_text = "the number is " + str(response)
+    else:
+        response_text = "hehe, guess what ?"
+    return response_text
+    
+
         
    
