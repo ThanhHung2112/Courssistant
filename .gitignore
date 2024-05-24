@@ -10,3 +10,7 @@ streamlit/
 
 # Virtualenv
 venv/
+
+QnA/
+
+train_model/models/
