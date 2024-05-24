@@ -16,11 +16,10 @@ from pandasai.llm import OpenAI
 
 
 
-st.title("Courssistant")
+st.title("Courssistant Page")
 
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
-
 
 # Initialize or load chat history
 if "messages" not in st.session_state:
@@ -34,7 +33,7 @@ with st.sidebar:
 
 # Display chat messages in the sidebar
 with st.sidebar:
-    st.header("Chat with Rasa Bot")
+    st.header("Chat with Courssistant")
     
     chat_container = st.container()  # Create a container for chat messages
 

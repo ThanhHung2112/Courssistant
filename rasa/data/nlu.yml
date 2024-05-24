@@ -1,0 +1,414 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Hey
+    - Hi there
+    - Hello
+    - Anyone here?
+    - Good morning
+    - Good afternoon
+    - Good evening
+    - Hi
+    - Howdy
+    - What’s up?
+    - Yo
+    - Greetings
+    - Salutations
+    - Hello there
+    - Hiya
+    - Hey there
+    - How’s it going?
+    - What’s new?
+    - Is anyone available?
+    - Howdy partner
+    - What’s happening?
+    - Ahoy
+    - Bonjour
+    - Hola
+    - Hi, how are you?
+    - Hey, how’s everything?
+    - Hi, what’s up?
+    - Good day
+    - Hi everyone
+    - How are you doing?
+    - How have you been?
+    - Long time no see
+    - Nice to meet you
+    - Pleasure to meet you
+    - How are things?
+    - How’s life?
+    - Hello, anybody there?
+    - Hi, anyone here?
+    - Hey, can you help me?
+    - Hello, can we talk?
+    - Hi, how’s your day?
+    - Hey, what’s going on?
+    - Hi, what are you up to?
+    - Hi, are you there?
+    - Hello, can I ask something?
+    - Hi, can you assist me?
+    - Hey, need some help?
+    - Hi, what’s happening?
+    - Hello, anyone available?
+    - Hi, can I talk to you?
+    - Hey, can we chat?
+    - Hi, are you free?
+    - Hello, need some assistance
+    - Hi, got a minute?
+    - Hey, quick question
+    - Hi, just wanted to say hi
+    - Hello, looking for some help
+    - Hi, hope you’re well
+    - Hey, how’s it going?
+    - Hi, how’s everything going?
+    - Hello, can I get some help?
+    - Hi, is anyone online?
+    - Hey, can we discuss something?
+    - Hi, who’s available?
+    - Hello, got a moment?
+    - Hi, quick chat?
+    - Hey, are you there?
+    - Hi, can you talk?
+    - Hello, need help with something
+    - Hi, can we talk?
+    - Hey, what’s going on?
+    - Hi, need some assistance
+    - Hello, can we discuss?
+    - Hi, are you around?
+    - Hey, what’s up?
+    - Hi, need to ask something
+    - Hello, can you talk?
+    - Hi, anyone free?
+    - Hey, quick question for you
+    - Hi, anyone available?
+    - Hello, can I ask you something?
+    - Hi, need to discuss something
+    - Hey, got a minute to talk?
+    - Hi, can you assist?
+    - Hello, who’s there?
+    - Hi, can we chat?
+    - Hey, need to talk to someone
+    - Hi, what’s up with you?
+    - Hello, are you free?
+    - Hi, can you help me with something?
+    - Hey, just checking in
+    - Hi, how have you been?
+    - Hello, is anyone here?
+    - Hi, got a second?
+    - Hey, what’s happening?
+    - Hi, can we speak?
+    - Hello, quick question for you
+    - Hi, is anyone available?
+    - Hey, need your help
+    - Hi, anyone around?
+    - Hello, can you assist me?
+    - Hey, need some advice
+    - Hi, can we discuss something?
+    - Hello, anyone here?
+    - Hi, I have a question
+    - Hey, how are you today?
+    - Hi, anyone available to chat?
+    - Hello, how’s your day going?
+    - Hi, can you help me out?
+    - Hey, what’s going on today?
+    - Hi, need some guidance
+    - Hello, anyone free?
+    - Hi, need to talk
+    - Hey, what’s happening today?
+    - Hi, got a second to talk?
+    - Hello, need some help here
+    - Hi, anyone online?
+    - Hey, got a question for you
+    - Hi, how’s everything?
+    - Hello, anyone available to help?
+    - Hi, need to ask something quick
+    - Hey, anyone here?
+    - Hi, how’s it going today?
+    - Hello, can I get some help?
+    - Hi, anyone around to chat?
+    - Hey, what’s up with you?
+    - Hi, got a minute?
+    - Hello, need some assistance
+    - Hi, can you help?
+    - Hey, anyone here to chat?
+    - Hi, can I get some advice?
+    - Hello, what’s going on?
+    - Hi, need some help with this
+    - Hey, how’s it going?
+    - Hi, can we talk for a minute?
+    - Hello, is anyone here to help?
+    - Hi, need some guidance on this
+    - Hey, anyone available?
+    - Hi, quick chat?
+    - Hello, can we talk?
+    - Hi, how are things?
+    - Hey, need to ask something
+    - Hi, anyone free to talk?
+    - Hi, can I get some help here?
+    - Hey, can we discuss this?
+    - Hi, anyone around to help?
+    - Hello, need some advice
+    - Hey, anyone online right now?
+    - Hi, can you assist me with this?
+    - Hello, got a second?
+    - Hi, need help with something
+    - Hey, can we chat for a bit?
+    - Hi, anyone here to assist?
+    - Hello, anyone available right now?
+    - Hey, need to discuss this
+    - Hi, anyone here to talk?
+    - Hello, can I ask something?
+    - Hi, anyone available to chat?
+    - Hi, got a minute to help?
+    - Hello, need assistance
+    - Hi, anyone here to assist me?
+    - Hey, can we talk about this?
+    - Hi, how’s it going today?
+    - Hello, anyone available to talk?
+    - Hi, need some advice on this
+    - Hey, anyone online?
+    - Hi, what’s new today?
+    - Hello, need some guidance here
+    - Hi, can we chat for a second?
+    - Hey, anyone available for a chat?
+    - Hi, need some help with this issue
+    - Hello, anyone here to help?
+    - Hi, can I get some advice here?
+    - Hey, need to talk to someone
+    - Hello, anyone around to chat?
+    - Hi, can you assist me with this?
+    - Hi, anyone available to assist?
+    - Hello, need some help with this
+    - Hi, anyone online to chat?
+    - Hey, can we discuss something here?
+    - Hi, anyone available for help?
+    - Hi, need some guidance on this issue
+    - Hey, anyone here for a quick chat?
+    - Hi, what’s happening today?
+    - Hello, need some assistance here
+    - Hi, anyone available to talk?
+    - Hey, anyone around to help?
+    - Hi, can we talk for a second?
+    - Hello, anyone online to help?
+    - Hi, need some advice on this
+    - Hi, anyone here for a chat?
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: ask_name
+  examples: |
+    - what's your name ?
+    - How can I call you ?
+    - Name what ?
+    - What should I address you as?
+    - May I know your name?
+    - How would you like me to refer to you?
+    - Can you share your name with me?
+    - What do people call you?
+    - Do you mind telling me your name?
+    - Could you introduce yourself?
+    - I'm curious, what's your name?
+    - What's your preferred name?
+
+- intent: features
+  examples: |
+    - What can you do ?
+    - Which functions do you provide ?
+    - What can you support ?
+    - What functionalities do you offer?
+    - Can you list your capabilities?
+    - What are your features?
+    - What kind of support do you provide?
+    - What tasks are you capable of performing?
+    - What assistance do you offer?
+    - Could you describe your abilities?
+    - What services do you offer?
+    - Can you detail the functions you provide?
+    - What are your supported actions?
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - Who are you?
+    - Are you a bot?
+    - Are you human or bot?
+    - Are you human?
+    - Hi bot
+    - Hey human
+    - Are you real?
+    - Is this a bot?
+    - Hello bot
+    - Hey AI
+    - Are you an AI?
+    - Hi, are you human?
+    - Are you a robot?
+    - Hello, are you a bot?
+    - Are you an artificial intelligence?
+    - Are you a real person?
+    - Hi, are you real?
+    - Hey, are you a bot?
+    - Are you a computer?
+    - Is this a real person?
+    - Hi, are you a machine?
+    - Are you an AI or human?
+    - Hello, are you an AI?
+    - Are you a chatbot?
+    - Hi, is this a bot?
+    - Are you a digital assistant?
+    - Is this a real conversation?
+    - Hello, are you real?
+    - Are you a real human?
+    - Hi, are you an AI bot?
+    - Is this an AI?
+    - Hello, is this a human?
+    - Are you a virtual assistant?
+    - Hey, are you a chatbot?
+    - Hi, are you a real person?
+    - Are you an automated system?
+    - Are you a human being?
+    - Hi, are you a digital assistant?
+    - Is this an AI or human?
+    - Hello, are you a machine?
+    - Hi, are you a real entity?
+    - Are you a real individual?
+    - Hi, is this an artificial intelligence?
+    - Are you an intelligent agent?
+    - Are you a real chatbot?
+    - Hey, are you an AI assistant?
+    - Is this a chatbot or human?
+    - Hi, are you a computer program?
+    - Are you a human or computer?
+    - Is this a human or bot?
+    - Hi, is this a real assistant?
+    - Are you a digital bot?
+    - Are you an AI or real person?
+    - Hello, are you an automated bot?
+    - Hi, are you a virtual bot?
+    - Are you a human chatbot?
+    - Are you an AI system?
+    - Hi, are you a real chatbot?
+    - Is this an automated system?
+    - Are you a real assistant?
+    - Hi, are you a human or AI?
+    - Is this a computer or person?
+    - Are you a bot or human?
+    - Hi, is this a digital assistant?
+    - Are you a robot or human?
+    - Is this a human or AI?
+    - Are you an AI assistant?
+    - Are you a digital intelligence?
+    - Hi, are you a real person or AI?
+    - Is this an automated assistant?
+    - Are you an intelligent bot?
+    - Hi, are you an AI or real?
+    - Is this a real or bot?
+    - Are you a computer assistant?
+    - Are you a human chatbot or AI?
+    - Hi, are you a real or bot?
+    - Is this a digital AI?
+    - Are you a human assistant?
+    - Are you a real digital assistant?
+    - Hi, are you a chatbot or human?
+    - Is this an AI or real assistant?
+    - Are you a human AI?
+    - Are you a real AI assistant?
+    - Hi, are you an automated bot?
+    - Is this a virtual assistant or human?
+    - Are you an AI chatbot?
+    - Are you a real virtual assistant?
+    - Hi, are you a bot or real person?
+    - Is this a human AI?
+    - Are you a digital or real assistant?
+    - Are you an AI human?
+    - Hi, is this a bot or person?
+    - Are you an artificial bot?
+    - Are you a real intelligent assistant?
+    - Hi, is this a computer or real?
+    - Are you an AI digital assistant?
+    - Are you a human AI assistant?
+    - Hi, is this a real or digital assistant?
+    - Are you a bot AI?
+    - Are you a real person or bot?
+    - Hi, are you a chatbot or real?
