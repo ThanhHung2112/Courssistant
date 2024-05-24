@@ -1,10 +1,9 @@
 import streamlit as st
 from services.rasa_api import get_rasa_response
 from services.chat_histories import save_chat_history, load_chat_history
-from services.text2sql import get_connection, QnAWithDuck, table_schema
+from components.course_grid import QnA_SQL, display_course_grid
 import pandas as pd
 import numpy as np
-import db_config
 from sqlalchemy import create_engine, text
 import os
 import subprocess
@@ -74,53 +73,15 @@ with st.sidebar:
         # Save chat history after each interaction
         save_chat_history(st.session_state.messages)
 
-        
-def display_course_grid(df):
-    card_height = 300
-
-    num_columns = 3
-    num_rows = len(df)
-    
-    rows = [df.iloc[i:i + num_columns] for i in range(0, num_rows, num_columns)]
-
-    for row in rows:
-        cols = st.columns(num_columns)
-        for col, (index, item) in zip(cols, row.iterrows()):
-            col.markdown(f"""
-            <div style="margin-bottom: 20px;">
-                <div style="border: 2px solid #000; padding: 10px; border-radius: 10px; background-color: #fff; height: {card_height}px;">
-                    <h2 style="color: #000;">{item['contactLastName']}</h2>
-                    <p style="color: #000;"><strong>Name:</strong> {item['contactFirstName']}</p>
-                    <p style="color: #000;"><strong>Country:</strong> {item['country']}</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-
-# userInput = "how many customer"
-def QnA_SQL(userInput):
-    engineSQL = get_connection()
-    create_table_query = table_schema("customers", engineSQL)
-    queryExecutable = QnAWithDuck(userInput, create_table_query)
-    df = pd.read_sql_query(sql = text(queryExecutable), con = engineSQL.connect())
-    print(df)
-    df.to_csv("df_display.csv")
-    return df
 
 st.title("Yattaaaaaaaaa")
-
-# df = pd.read_csv("df_display.csv")
-userInputs = ["find all customer live in australia", "find all customer live in america", "find the customer with the highest credit limit"]
+userInputs = ["who is the customer with the highest credit limit"]
+# userInputs = ["find all customer live in australia", "find all customer live in america", "find the customer with the highest credit limit"]
+zone = st.empty()
 for userInput in userInputs:
-    st.write(userInput)
-    st.empty()
-    df = QnA_SQL(userInput)
-    display_course_grid(df)
+    df, response = QnA_SQL(userInput)
+    with zone.container():
+        st.write(response)
+        display_course_grid(df)
+        
 
-# try:
-#     agent = Agent(df_agent)
-#     agent.train(docs="He is the highest")
-#     response = agent.chat(question + "answer with text or dataframe")
-#     print(response)
-#     print(type(response))
-# except:
-#     print("error")
