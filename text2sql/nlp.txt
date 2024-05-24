@@ -1,0 +1,17 @@
+1. UI Streamlit
+	a. Chatbar
+	b. Course
+2. Voice2Text:
+	a. Nemo (NVidia)
+3. Chatbot:
+	a. Rasa
+4. Intent:
+	a. Category
+		i. Search Course
+		ii. Speach
+		iii. Landing Page
+		iv. Standard Q&A
+5. Text2SQL:
+	a. PandasAI
+	b. Huggingface
+	c. Vector Database	
