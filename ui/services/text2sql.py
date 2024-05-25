@@ -83,7 +83,3 @@ def QnAWithPanda(df, question):
     else:
         response_text = "hehe, guess what ?"
     return response_text
-    
-
-        
-   
