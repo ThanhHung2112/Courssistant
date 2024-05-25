@@ -15,6 +15,6 @@ venv/
 
 QnA/
 
-train_model/models/
+train_intent_classify/models/
 ui/models/common_intents
 ui/models/whisper_intents
