@@ -1,6 +1,7 @@
 import streamlit as st
 from services.rasa_api import get_rasa_response
 from services.chat_histories import save_chat_history, load_chat_history
+from services.text2speech import Text2Speech
 from components.course_grid import QnA_SQL, display_course_grid
 import pandas as pd
 import numpy as np
@@ -74,13 +75,15 @@ with st.sidebar:
 
 
 st.title("Yattaaaaaaaaa")
-userInputs = ["who is the customer with the highest credit limit"]
-# userInputs = ["find all customer live in australia", "find all customer live in america", "find the customer with the highest credit limit"]
+userInputs = ["how many course with Intermediate level?"]
+# userInputs = ["find me 5 course with beginner level", "how many course with Intermediate level?", "find the customer with the highest credit limit"]
 zone = st.empty()
 for userInput in userInputs:
+    current = time.time()
     df, response = QnA_SQL(userInput)
     with zone.container():
         st.write(response)
+        print(f"Finished QnA in {time.time()- current} seconds")
         display_course_grid(df)
         
 
