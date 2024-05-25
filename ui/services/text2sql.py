@@ -106,7 +106,6 @@ def QnAWithPanda(df, question):
             response_text = random.choice(error_texts)
     except:
         response_text = random.choice(error_texts)
-   
 
     return response_text
     

@@ -11,13 +11,20 @@ pip install -r requirements.txt
 ```
 
 ## Run
+Old method 
 
 ```bash
 rasa run --enable-api --cors "*" --debug
 ```
 On another termial, execute this 
 ```bash
-streamlit run ui/main.py --server.runOnSave true
+streamlit run ui/app.py --server.runOnSave true
+```
+
+New 🎉 supper easy :>
+
+```bash
+python main.py
 ```
 
 ```
