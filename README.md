@@ -5,12 +5,17 @@ Courssistant (Course - Asssistant) is a chatbot support user in course selection
 
 python: 3.9.19
 
+## Installation
+```bash
+pip install -r requirements.txt
+```
+
 ## Run
 
 ```bash
 rasa run --enable-api --cors "*" --debug
 ```
-
+On another termial, execute this 
 ```bash
 streamlit run ui/main.py --server.runOnSave true
 ```
