@@ -3,3 +3,5 @@ rasa
 streamlit
 torch
 transformers
+pandasai
+pymysql
