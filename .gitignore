@@ -1,6 +1,8 @@
 # Python
 *.pyc
 __pycache__/
+*.log
+*.rasa
 
 # Streamlit
 streamlit/
@@ -14,3 +16,5 @@ venv/
 QnA/
 
 train_model/models/
+ui/models/common_intents
+ui/models/whisper_intents
