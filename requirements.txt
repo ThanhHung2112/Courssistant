@@ -7,3 +7,4 @@ pandasai
 pymysql
 pygame
 gtts
+packaging==20.9
