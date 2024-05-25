@@ -4,6 +4,8 @@ import subprocess
 import time
 from subprocess import Popen, PIPE
 import re
+import random
+import numpy as np
 import pandas as pd
 from pandasai import Agent
 from pandasai.llm import OpenAI
@@ -64,22 +66,47 @@ def QnAWithPanda(df, question):
     os.environ["PANDASAI_API_KEY"] = "$2a$10$lwbP.akrhl.4fXNcDF/oQu5jcUArQwhXCXHNmcoTIYDQAsWEGeHn6"
     agent = Agent(df)
     print("training pandas")
-    agent.train(docs="He is the highest")
-    print("panding")
-    response = agent.chat(question)
-    print(response)
-    print(type(response))
-    response_text = ""
+    response_texts = [
+            "Here is your output.",
+            "This is what you've got.",
+            "Here's the result you asked for."
+        ]
 
-    if isinstance(response, pd.DataFrame):
-        response_text = "here is the result"
-    elif isinstance(response, str):
-        if "Request failed" in response:
-            response_text = "hehe, guess what ?"
+    error_texts = [
+        "Oops! Something went wrong while trying to answer, here is your output.",
+        "Sorry, we encountered an error, here is your output",
+        "Hmm, it seems there was an error, here is your output"
+    ]
+
+    try: 
+        agent.train(docs="He is the highest")
+        print("panding")
+        print(response)
+        print(type(response))
+
+        response = agent.chat(question)
+
+        # while "Request failed" in response:
+        #     print("Raising error, resend request...")
+        #     response = agent.chat(question)
+        
+        if isinstance(response, pd.DataFrame):
+            response_text = random.choice(response_texts)
+
+        elif isinstance(response, str):
+            if "Request failed" in response:
+                response_text = random.choice(error_texts)
+            else:
+                response_text = response
+
+        elif isinstance(response, (int, np.int64, np.integer)):
+            response_text = f"The number of items to search is {str(response)}"
+
         else:
-            response_text = response
-    elif isinstance(response, int):
-        response_text = "the number is " + str(response)
-    else:
-        response_text = "hehe, guess what ?"
+            response_text = random.choice(error_texts)
+    except:
+        response_text = random.choice(error_texts)
+   
+
     return response_text
+    

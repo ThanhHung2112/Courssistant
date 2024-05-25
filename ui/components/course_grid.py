@@ -18,21 +18,23 @@ def display_course_grid(df):
             col.markdown(f"""
             <div style="margin-bottom: 20px;">
                 <div style="border: 2px solid #000; padding: 10px; border-radius: 10px; background-color: #fff; height: {card_height}px;">
-                    <h2 style="color: #000;">{item['contactLastName']}</h2>
-                    <p style="color: #000;"><strong>Name:</strong> {item['contactFirstName']}</p>
-                    <p style="color: #000;"><strong>Country:</strong> {item['country']}</p>
+                    <h5 style="color: #000;">{item['CourseName']}</h2>
+                    <p style="color: #000;"><strong>Difficulty Level:</strong> {item['DifficultyLevel']}</p>
+                    <p style="color: #000;"><strong>Description:</strong> {item['CourseDescription']}</p>
                 </div>
             </div>
             """, unsafe_allow_html=True)
 
+
 def QnA_SQL(userInput):
     engineSQL = get_connection()
-    create_table_query = table_schema("customers", engineSQL)
+    create_table_query = table_schema("courses", engineSQL)
     queryExecutable = QnAWithDuck(userInput, create_table_query)
     df = pd.read_sql_query(sql = text(queryExecutable), con = engineSQL.connect())
     print(df)
-    response = QnAWithPanda(df, userInput)
+    df_pd = df.drop(columns=['CourseURL'])
+    response = QnAWithPanda(df_pd, userInput)
     print(response)
-    df.to_csv("df_display.csv")
+    # df.to_csv("../df_display/main_screen.csv")
     return df, response
 
