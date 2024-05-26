@@ -1,23 +1,15 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-from sqlalchemy import create_engine, text
-import os
-import subprocess
 import time
-from subprocess import Popen, PIPE
-import re
-from pandasai import Agent
-from pandasai.llm import OpenAI
 import pandas as pd
+
+from constants.const import set_execute_whisper, get_execute_whisper
 from components.course_grid import QnA_SQL, display_course_grid
 from services.rasa_api import get_rasa_response
 from services.chat_histories import save_chat_history, load_chat_history
-from services.text2speech import Text2Speech
-from services.intent_classify import intent_classification, whisper_intent_classification
-
-from time import sleep
-
+from services.intent_handlers.intent_classify import intent_classification, whisper_intent_classification
+from services.whisper_handler.speech2text import speech2text
+from services.whisper_handler.text2speech import text2speech
 st.title("Courssistant Page")
 
 USER_AVATAR = "👤"
@@ -34,7 +26,6 @@ with st.sidebar:
     if st.button("Delete Chat History"):
         st.session_state.messages = []
         save_chat_history([])
-
 # Display chat messages in the sidebar
 with st.sidebar:
     st.header("Chat with Courssistant")
@@ -51,7 +42,6 @@ with st.sidebar:
     # User input in the sidebar
     with st.chat_message("user"):
         user_input = st.chat_input("How can I help?", key="user_input")
-        # submit_button = st.form_submit_button(label="Send")
 
     if user_input:
         st.session_state.messages.append({"role": "user", "content": user_input})
@@ -65,14 +55,22 @@ with st.sidebar:
             with st.chat_message("assistant", avatar=BOT_AVATAR):
                 thinking = st.write("Thinking ...")
                 whisper_intent = whisper_intent_classification(user_input)
-
+                st.write(whisper_intent)
                 if whisper_intent in ["whisper_on", "whisper_off"]:
-                    execute_whisper = (whisper_intent == "whisper_on")
-                    responses = f"Whisper is {'on' if execute_whisper else 'off'}"
-                else:
-                    execute_whisper = "whisperon" in whisper_intent
+                    set_execute_whisper(whisper_intent == "whisper_on")
+                    responses = f"Whisper is {'on' if get_execute_whisper() else 'off'}"
+                elif whisper_intent == 'common':
                     common_intent = intent_classification(user_input)
-                    if common_intent in ["greet", "ask_name", "ask_features", "bot_challenge"]:
+                    st.write(common_intent)
+                    if common_intent.lower() in ["greet", "ask_name", "ask_features", "bot_challenge"]:
+                        responses = get_rasa_response(user_input)
+                    else:
+                        df, responses = QnA_SQL(user_input)
+                else:
+                    set_execute_whisper("whisperon" in whisper_intent)
+                    common_intent = intent_classification(user_input)
+                    st.write(common_intent)
+                    if common_intent.lower() in ["greet", "ask_name", "ask_features", "bot_challenge"]:
                         responses = get_rasa_response(user_input)
                     else:
                         df, responses = QnA_SQL(user_input)
@@ -82,12 +80,18 @@ with st.sidebar:
                         full_response += response.get("text", "")
                 except:
                     full_response = responses
+                
+                # text 2 speech
+                st.write(get_execute_whisper())
+                if get_execute_whisper():
+                    text2speech(full_response)
+                    
                 st.session_state.messages.append({"role": "assistant", "content": full_response})
                 thinking = st.empty()
                 st.write(full_response)
 
-        # Save chat history after each interaction
-        save_chat_history(st.session_state.messages)
+            # Save chat history after each interaction
+            save_chat_history(st.session_state.messages)
 
 #----------------------------------------------
 # MAIN PAGE
@@ -95,11 +99,11 @@ st.title("Yattaaaaaaaaa")
 userInputs = ["how many course with Intermediate level?"]
 df = pd.read_csv("assistant/data/Coursera_2.csv")
 # userInputs = ["find me 5 course with beginner level", "how many course with Intermediate level?", "find the customer with the highest credit limit"]
-# zone = st.empty()
+zone = st.empty()
 for userInput in userInputs:
     current = time.time()
     # df, response = QnA_SQL(userInput)
-    with st.container():
+    with zone.container():
         # st.write(response)
         print(f"Finished QnA in {time.time()- current} seconds")
         display_course_grid(df[:30])
