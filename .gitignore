@@ -19,3 +19,4 @@ train_intent_classify/models/
 
 ui/models/common_intents/
 ui/models/whisper_intents/
+ui/services/intent_handlers/models
