@@ -15,6 +15,7 @@ venv/
 
 QnA/
 
+rasa/models/
 train_intent_classify/models/
 
 ui/models/common_intents/
