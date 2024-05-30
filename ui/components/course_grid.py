@@ -7,7 +7,7 @@ from sqlalchemy import text
 def display_course_grid(df):
     card_height = 400
 
-    num_columns = 3
+    num_columns = 4
     num_rows = len(df)
     
     rows = [df.iloc[i:i + num_columns] for i in range(0, num_rows, num_columns)]
@@ -35,7 +35,7 @@ def display_course_grid(df):
             <div style="margin-bottom: 20px;">
                 <div style="border: 2px solid #000; padding: 10px; border-radius: 10px; background-color: #fff; height: {card_height}px;">
                     <h5 style="min-height: 85px; max-height: 85px; color: #000;">{name}</h2>
-                    <img src={img_scr}, style="width:200px; min-height:150px">
+                    <img src={img_scr}, style="width:215px; min-height:150px">
                     <p style="color: #000;"><strong>Difficulty Level:</strong> {item['DifficultyLevel']}</p>
                     <p style="color: #000;"><strong>Description:</strong> {item['CourseDescription'][:80]} ...</p>
                 </div>
