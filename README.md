@@ -10,6 +10,19 @@ python: 3.9.19
 pip install -r requirements.txt
 ```
 
+## Features
+
+
+## User Interface
+
+> Homepage
+
+<p align="center">
+  <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/homepage1.png" alt="Home Page 1">
+</p>
+
+
+
 ## Run
 Old method 
 
@@ -28,11 +41,10 @@ New 🎉 supper easy :>
 python main.py
 ```
 
-## User Interface
-
-> Homepage
-
+## Flow
 
 <p align="center">
-  <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/homepage1.png" alt="Home Page 1">
+  <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/flows" alt="Home Page 1">
 </p>
+
+
