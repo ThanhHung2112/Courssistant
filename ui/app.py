@@ -18,7 +18,7 @@ USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
 
 st.title("Courssistant Page")
-
+df = None
 # Initialize or load chat history
 if "messages" not in st.session_state:
     st.session_state.messages = load_chat_history()
@@ -56,7 +56,7 @@ with st.sidebar:
     with st.chat_message("user"):
         user_input = st.chat_input("How can I help?", key="user_input")
         if user_input:
-            process_user_input(chat_container,user_input)
+            df = process_user_input(chat_container,user_input)
 
         # Add microphone button
         mic_button = st.button("🎤", key="mic_button")
@@ -65,16 +65,18 @@ with st.sidebar:
                 st.session_state.is_listening = True
                 user_input = get_speech_input()
                 if user_input:
-                    process_user_input(chat_container, user_input)
+                    df = process_user_input(chat_container, user_input)
 
 #----------------------------------------------
 # MAIN PAGE
+
 # st.title("Yattaaaaaaaaa")
 userInputs = ["how many courses with Intermediate level?"]
-df = pd.read_csv("assistant/data/Coursera_2.csv")
+if df is None:
+    df = pd.read_csv("assistant/data/Coursera_2.csv")
 zone = st.empty()
 for userInput in userInputs:
     current = time.time()
     with zone.container():
         print(f"Finished QnA in {time.time() - current} seconds")
-        display_course_grid(df[:30])
+        display_course_grid(df[:300])
