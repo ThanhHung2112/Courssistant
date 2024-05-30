@@ -12,6 +12,7 @@ BOT_AVATAR = "🤖"
 
 # Function to process user input
 def process_user_input(chat_container, user_input):
+    df = None
     st.session_state.messages.append({"role": "user", "content": user_input})
     with chat_container:
         with st.chat_message("user", avatar=USER_AVATAR):
@@ -54,3 +55,5 @@ def process_user_input(chat_container, user_input):
             thinking = st.empty()
             st.write(full_response)
     save_chat_history(st.session_state.messages)
+
+    return df
