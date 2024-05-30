@@ -32,4 +32,7 @@ python main.py
 
 > Homepage
 
-<img scr="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/homepage.png">
+
+<p align="center">
+  <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/homepage.png" alt="Home Page 1">
+</p>
