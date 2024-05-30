@@ -18,7 +18,7 @@ USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
 
 st.title("Courssistant Page")
-df = None
+df = pd.read_csv("assistant/data/coursera_main_data.csv")
 # Initialize or load chat history
 if "messages" not in st.session_state:
     st.session_state.messages = load_chat_history()
@@ -69,14 +69,8 @@ with st.sidebar:
 
 #----------------------------------------------
 # MAIN PAGE
-
-# st.title("Yattaaaaaaaaa")
-userInputs = ["how many courses with Intermediate level?"]
-if df is None:
-    df = pd.read_csv("assistant/data/Coursera_2.csv")
 zone = st.empty()
-for userInput in userInputs:
-    current = time.time()
-    with zone.container():
-        print(f"Finished QnA in {time.time() - current} seconds")
-        display_course_grid(df[:300])
+current = time.time()
+with zone.container():
+    print(f"Finished QnA in {time.time() - current} seconds")
+    display_course_grid(df[:100])
