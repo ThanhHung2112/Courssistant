@@ -34,5 +34,5 @@ python main.py
 
 
 <p align="center">
-  <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/homepage.png" alt="Home Page 1">
+  <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/homepage1.png" alt="Home Page 1">
 </p>
