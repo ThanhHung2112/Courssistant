@@ -44,7 +44,7 @@ python main.py
 ## Flow
 
 <p align="center">
-  <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/flows" alt="Home Page 1">
+  <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/flows.png" alt="Home Page 1">
 </p>
 
 
