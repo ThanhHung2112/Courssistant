@@ -19,7 +19,7 @@ QnA/
 
 rasa/models/
 train_intent_classify/models/
-
+ui/histories
 ui/models/common_intents/
 ui/models/whisper_intents/
 ui/services/intent_handlers/models
