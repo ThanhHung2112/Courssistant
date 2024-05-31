@@ -30,7 +30,7 @@ def display_course_grid(df):
     # Default image URL
     default_img_scr = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN9mLqVjKSSwvlY_o4pTeOKY2oSpbQYDFcjw&s"
 
-    # Biến trạng thái để chỉ ra rằng bạn muốn hiển thị trang landing page
+    # status
     show_landing_page = False
 
     for row in rows:
