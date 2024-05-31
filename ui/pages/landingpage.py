@@ -17,7 +17,6 @@ import warnings
 # Suppress the warning about st.experimental_get_query_params being deprecated
 warnings.filterwarnings("ignore", message=".*st.experimental_get_query_params.*", category=FutureWarning)
 
-st.set_page_config(layout="wide")
 
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
@@ -70,13 +69,41 @@ with st.sidebar:
                 user_input = get_speech_input()
                 if user_input:
                     df = process_user_input(chat_container, user_input)
+# ----------------------------------------------
+# LandingPage
+# Retrieve the query parameters
+query_params = st.experimental_get_query_params()
 
-#----------------------------------------------
-# MAIN PAGE
-st.title("Online Courses")
-zone = st.empty()
-current = time.time()
-with zone.container():
-    print(f"Finished QnA in {time.time() - current} seconds")
+# Extract the parameters if they exist, otherwise set them to None
+course = query_params.get("course", [None])[0]
+level = query_params.get("level", [None])[0]
+rate = query_params.get("rate", [None])[0]
+description = query_params.get("description", [None])[0]
+spec = query_params.get("spec", [None])[0]
+university = query_params.get("university", [None])[0]
+img = query_params.get("img", [None])[0]
+
+if all([course, spec, level, rate, description, university, img]):
+    # Display the image
+    st.markdown(f"""
+        <div>
+        <img src="{img}" style="display: block; margin: auto; width: 700px; min-height: 300px; max-height: 300px;">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
     
-    display_course_grid(df[:100])
+    # Display the title
+    st.title(course)
+    st.write(f"**University**: {university.upper()}")
+    st.markdown(f"**Specialized**: {spec}")
+    st.write(f"**Difficulty Level**: {level}")
+    st.write(f"**CourseRating**: {rate} ⭐️")
+    st.markdown(f"""**Description**:
+                <p>{description} </p>
+                """
+                ,  unsafe_allow_html=True)
+else:
+    st.write("Welcome to the landing page!")
+
+

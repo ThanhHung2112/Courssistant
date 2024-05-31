@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 from services.whisper_handler.text2speech import text2speech
 from components.course_grid import QnA_SQL, display_course_grid
@@ -12,7 +13,7 @@ BOT_AVATAR = "🤖"
 
 # Function to process user input
 def process_user_input(chat_container, user_input):
-    df = None
+    df = pd.read_csv("assistant/data/coursera_main_data.csv")
     st.session_state.messages.append({"role": "user", "content": user_input})
     with chat_container:
         with st.chat_message("user", avatar=USER_AVATAR):
