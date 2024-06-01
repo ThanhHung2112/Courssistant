@@ -7,7 +7,11 @@ pandasai
 pymysql
 pygame
 gtts
+<<<<<<< HEAD
+packaging==20.9
+=======
 packaging==20.9
 # python3 -m pip install --upgrade pip setuptools wheelPyAudio
 git+https://github.com/openai/whisper.git
 nltk
+>>>>>>> e14947974958d715e5f018393eacc28abbe98ac1

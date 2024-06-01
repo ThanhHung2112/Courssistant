@@ -15,9 +15,16 @@ venv/
 
 QnA/
 
+<<<<<<< HEAD
+train_intent_classify/models/
+
+ui/models/common_intents/
+ui/models/whisper_intents/
+=======
 rasa/models/
 train_intent_classify/models/
 
 ui/models/common_intents/
 ui/models/whisper_intents/
 ui/services/intent_handlers/models
+>>>>>>> e14947974958d715e5f018393eacc28abbe98ac1
