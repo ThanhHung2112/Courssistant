@@ -3034,3 +3034,288 @@ requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.domer.ai', po
 2024-05-26 02:34:19 [INFO] Agent successfully trained on the data
 2024-05-26 02:35:51 [INFO] Agent successfully trained on the data
 2024-05-26 02:41:11 [INFO] Agent successfully trained on the data
+2024-06-01 22:38:49 [INFO] Agent successfully trained on the data
+2024-06-01 22:39:53 [INFO] Agent successfully trained on the data
+2024-06-01 22:40:41 [INFO] Agent successfully trained on the data
+2024-06-01 22:40:42 [INFO] Question: find me 50 courses in beginner level
+2024-06-01 22:40:42 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-06-01 22:40:42 [INFO] Prompt ID: 6c0f6929-fa23-4502-b3a9-d6082f31f519
+2024-06-01 22:40:42 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-06-01 22:40:42 [INFO] Executing Step 0: ValidatePipelineInput
+2024-06-01 22:40:42 [INFO] Executing Step 1: CacheLookup
+2024-06-01 22:40:42 [INFO] Executing Step 2: PromptGeneration
+2024-06-01 22:40:45 [INFO] Executing Step 3: CodeGenerator
+2024-06-01 22:40:48 [INFO] Prompt used:
+            None
+            
+2024-06-01 22:40:48 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+beginner_courses = []
+for df in dfs:
+    beginner_courses.extend(df[df['DifficultyLevel'] == 'Beginner'])
+
+beginner_courses_50 = beginner_courses[:50]
+
+result = {"type": "dataframe", "value": pd.DataFrame(beginner_courses_50)}
+            ```
+            
+2024-06-01 22:40:48 [INFO] Executing Step 4: CachePopulation
+2024-06-01 22:40:48 [INFO] Executing Step 5: CodeCleaning
+2024-06-01 22:40:48 [INFO] 
+Code running:
+```
+beginner_courses = []
+for df in dfs:
+    beginner_courses.extend(df[df['DifficultyLevel'] == 'Beginner'])
+beginner_courses_50 = beginner_courses[:50]
+result = {'type': 'dataframe', 'value': pd.DataFrame(beginner_courses_50)}
+        ```
+2024-06-01 22:40:48 [INFO] Executing Step 6: CodeExecution
+2024-06-01 22:40:48 [INFO] Executing Step 7: ResultValidation
+2024-06-01 22:40:48 [INFO] Answer: {'type': 'dataframe', 'value':                    0
+0                 ID
+1         CourseName
+2         University
+3    DifficultyLevel
+4       CourseRating
+5  CourseDescription
+6             Skills
+7        Specialized}
+2024-06-01 22:40:48 [INFO] Executing Step 8: ResultParsing
+2024-06-01 22:44:11 [INFO] Agent successfully trained on the data
+2024-06-01 22:44:11 [INFO] Question: which is the course with the highest rating
+2024-06-01 22:44:11 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-06-01 22:44:11 [INFO] Prompt ID: 1fa117c2-b0eb-4b03-a60c-7194387f7343
+2024-06-01 22:44:11 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-06-01 22:44:11 [INFO] Executing Step 0: ValidatePipelineInput
+2024-06-01 22:44:11 [INFO] Executing Step 1: CacheLookup
+2024-06-01 22:44:11 [INFO] Executing Step 2: PromptGeneration
+2024-06-01 22:44:14 [INFO] Using prompt: <dataframe>
+dfs[0]:1x8
+ID,CourseName,University,DifficultyLevel,CourseRating,CourseDescription,Skills,Specialized
+2560,Change Leadership: Strategic Route Analysis with Miro,Coursera Project Network,Advanced,5.0,"By the end of this guided project, you will be fluent in creating a change implementation model using Route Analysis for a hands-on example. This will equip you with a systemic implementation framework for change that can be utilised in professional and p",leadership  Innovation  Planning  Change Management  empowerment  business case  modeling  personal advertisement  Mapping  project business business-strategy,Business
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+Here are additional documents for reference. Feel free to use them to answer.
+He is the highest
+
+### QUERY
+ which is the course with the highest rating
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-06-01 22:44:14 [INFO] Executing Step 3: CodeGenerator
+2024-06-01 22:44:18 [INFO] Prompt used:
+            None
+            
+2024-06-01 22:44:18 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+highest_rating_course = max(dfs[0]['CourseRating'])
+highest_rating_course_name = dfs[0][dfs[0]['CourseRating'] == highest_rating_course]['CourseName'].values[0]
+
+# Declare result variable
+result = {"type": "string", "value": f"The course with the highest rating is: {highest_rating_course_name} with a rating of {highest_rating_course}."}
+            ```
+            
+2024-06-01 22:44:18 [INFO] Executing Step 4: CachePopulation
+2024-06-01 22:44:18 [INFO] Executing Step 5: CodeCleaning
+2024-06-01 22:44:18 [INFO] 
+Code running:
+```
+highest_rating_course = max(dfs[0]['CourseRating'])
+highest_rating_course_name = dfs[0][dfs[0]['CourseRating'] == highest_rating_course]['CourseName'].values[0]
+result = {'type': 'string', 'value': f'The course with the highest rating is: {highest_rating_course_name} with a rating of {highest_rating_course}.'}
+        ```
+2024-06-01 22:44:18 [INFO] Executing Step 6: CodeExecution
+2024-06-01 22:44:18 [INFO] Executing Step 7: ResultValidation
+2024-06-01 22:44:18 [INFO] Answer: {'type': 'string', 'value': 'The course with the highest rating is: Change Leadership: Strategic Route Analysis with Miro with a rating of 5.0.'}
+2024-06-01 22:44:18 [INFO] Executing Step 8: ResultParsing
+2024-06-01 22:57:48 [INFO] Agent successfully trained on the data
+2024-06-01 22:57:49 [INFO] Question: which is the course with the highest rating
+2024-06-01 22:57:49 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-06-01 22:57:49 [INFO] Prompt ID: 102897ba-dbc5-489f-b659-0688084e318e
+2024-06-01 22:57:49 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-06-01 22:57:49 [INFO] Executing Step 0: ValidatePipelineInput
+2024-06-01 22:57:49 [INFO] Executing Step 1: CacheLookup
+2024-06-01 22:57:49 [INFO] Using cached response
+2024-06-01 22:57:49 [INFO] Executing Step 2: PromptGeneration
+2024-06-01 22:57:49 [INFO] Executing Step 2: Skipping...
+2024-06-01 22:57:49 [INFO] Executing Step 3: CodeGenerator
+2024-06-01 22:57:49 [INFO] Executing Step 3: Skipping...
+2024-06-01 22:57:49 [INFO] Executing Step 4: CachePopulation
+2024-06-01 22:57:49 [INFO] Executing Step 4: Skipping...
+2024-06-01 22:57:49 [INFO] Executing Step 5: CodeCleaning
+2024-06-01 22:57:49 [INFO] 
+Code running:
+```
+highest_rating_course = max(dfs[0]['CourseRating'])
+highest_rating_course_name = dfs[0][dfs[0]['CourseRating'] == highest_rating_course]['CourseName'].values[0]
+result = {'type': 'string', 'value': f'The course with the highest rating is: {highest_rating_course_name} with a rating of {highest_rating_course}.'}
+        ```
+2024-06-01 22:57:49 [INFO] Executing Step 6: CodeExecution
+2024-06-01 22:57:49 [INFO] Executing Step 7: ResultValidation
+2024-06-01 22:57:49 [INFO] Answer: {'type': 'string', 'value': 'The course with the highest rating is: AWS Elastic Beanstalk: Build & Deploy a Node.js RESTful API with a rating of 5.0.'}
+2024-06-01 22:57:49 [INFO] Executing Step 8: ResultParsing
+2024-06-01 23:02:29 [INFO] Agent successfully trained on the data
+2024-06-01 23:02:30 [INFO] Question: which is the course with the highest rating
+2024-06-01 23:02:30 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-06-01 23:02:30 [INFO] Prompt ID: 7f6a68ab-95a1-4faf-8607-2ea22a46650f
+2024-06-01 23:02:30 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-06-01 23:02:30 [INFO] Executing Step 0: ValidatePipelineInput
+2024-06-01 23:02:30 [INFO] Executing Step 1: CacheLookup
+2024-06-01 23:02:30 [INFO] Using cached response
+2024-06-01 23:02:30 [INFO] Executing Step 2: PromptGeneration
+2024-06-01 23:02:30 [INFO] Executing Step 2: Skipping...
+2024-06-01 23:02:30 [INFO] Executing Step 3: CodeGenerator
+2024-06-01 23:02:30 [INFO] Executing Step 3: Skipping...
+2024-06-01 23:02:30 [INFO] Executing Step 4: CachePopulation
+2024-06-01 23:02:30 [INFO] Executing Step 4: Skipping...
+2024-06-01 23:02:30 [INFO] Executing Step 5: CodeCleaning
+2024-06-01 23:02:30 [INFO] 
+Code running:
+```
+highest_rating_course = max(dfs[0]['CourseRating'])
+highest_rating_course_name = dfs[0][dfs[0]['CourseRating'] == highest_rating_course]['CourseName'].values[0]
+result = {'type': 'string', 'value': f'The course with the highest rating is: {highest_rating_course_name} with a rating of {highest_rating_course}.'}
+        ```
+2024-06-01 23:02:30 [INFO] Executing Step 6: CodeExecution
+2024-06-01 23:02:30 [INFO] Executing Step 7: ResultValidation
+2024-06-01 23:02:30 [INFO] Answer: {'type': 'string', 'value': 'The course with the highest rating is: AWS Elastic Beanstalk: Build & Deploy a Node.js RESTful API with a rating of 5.0.'}
+2024-06-01 23:02:30 [INFO] Executing Step 8: ResultParsing
+2024-06-01 23:04:30 [INFO] Agent successfully trained on the data
+2024-06-01 23:04:31 [INFO] Question: which is the course with the highest rating
+2024-06-01 23:04:31 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-06-01 23:04:31 [INFO] Prompt ID: 9b9bd659-f853-45c2-adc9-4bb09ce4bcb0
+2024-06-01 23:04:31 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-06-01 23:04:31 [INFO] Executing Step 0: ValidatePipelineInput
+2024-06-01 23:04:31 [INFO] Executing Step 1: CacheLookup
+2024-06-01 23:04:31 [INFO] Using cached response
+2024-06-01 23:04:31 [INFO] Executing Step 2: PromptGeneration
+2024-06-01 23:04:31 [INFO] Executing Step 2: Skipping...
+2024-06-01 23:04:31 [INFO] Executing Step 3: CodeGenerator
+2024-06-01 23:04:31 [INFO] Executing Step 3: Skipping...
+2024-06-01 23:04:31 [INFO] Executing Step 4: CachePopulation
+2024-06-01 23:04:31 [INFO] Executing Step 4: Skipping...
+2024-06-01 23:04:31 [INFO] Executing Step 5: CodeCleaning
+2024-06-01 23:04:31 [INFO] 
+Code running:
+```
+highest_rating_course = max(dfs[0]['CourseRating'])
+highest_rating_course_name = dfs[0][dfs[0]['CourseRating'] == highest_rating_course]['CourseName'].values[0]
+result = {'type': 'string', 'value': f'The course with the highest rating is: {highest_rating_course_name} with a rating of {highest_rating_course}.'}
+        ```
+2024-06-01 23:04:31 [INFO] Executing Step 6: CodeExecution
+2024-06-01 23:04:31 [INFO] Executing Step 7: ResultValidation
+2024-06-01 23:04:31 [INFO] Answer: {'type': 'string', 'value': 'The course with the highest rating is: AWS Elastic Beanstalk: Build & Deploy a Node.js RESTful API with a rating of 5.0.'}
+2024-06-01 23:04:31 [INFO] Executing Step 8: ResultParsing
+2024-06-01 23:05:52 [INFO] Agent successfully trained on the data
+2024-06-01 23:05:53 [INFO] Question: which is the course with the highest rating
+2024-06-01 23:05:53 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-06-01 23:05:53 [INFO] Prompt ID: 6f767267-b8fa-444c-b487-7902eb2f9f1a
+2024-06-01 23:05:53 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-06-01 23:05:53 [INFO] Executing Step 0: ValidatePipelineInput
+2024-06-01 23:05:53 [INFO] Executing Step 1: CacheLookup
+2024-06-01 23:05:53 [INFO] Using cached response
+2024-06-01 23:05:53 [INFO] Executing Step 2: PromptGeneration
+2024-06-01 23:05:53 [INFO] Executing Step 2: Skipping...
+2024-06-01 23:05:53 [INFO] Executing Step 3: CodeGenerator
+2024-06-01 23:05:53 [INFO] Executing Step 3: Skipping...
+2024-06-01 23:05:53 [INFO] Executing Step 4: CachePopulation
+2024-06-01 23:05:53 [INFO] Executing Step 4: Skipping...
+2024-06-01 23:05:53 [INFO] Executing Step 5: CodeCleaning
+2024-06-01 23:05:53 [INFO] 
+Code running:
+```
+highest_rating_course = max(dfs[0]['CourseRating'])
+highest_rating_course_name = dfs[0][dfs[0]['CourseRating'] == highest_rating_course]['CourseName'].values[0]
+result = {'type': 'string', 'value': f'The course with the highest rating is: {highest_rating_course_name} with a rating of {highest_rating_course}.'}
+        ```
+2024-06-01 23:05:53 [INFO] Executing Step 6: CodeExecution
+2024-06-01 23:05:53 [INFO] Executing Step 7: ResultValidation
+2024-06-01 23:05:53 [INFO] Answer: {'type': 'string', 'value': 'The course with the highest rating is: Change Leadership: Strategic Route Analysis with Miro with a rating of 5.0.'}
+2024-06-01 23:05:53 [INFO] Executing Step 8: ResultParsing
+2024-06-01 23:06:53 [INFO] Agent successfully trained on the data
+2024-06-01 23:06:54 [INFO] Question: which is the course with the highest rating
+2024-06-01 23:06:54 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-06-01 23:06:54 [INFO] Prompt ID: 3f2461f7-4ae5-4d24-aefc-601b0b5f2399
+2024-06-01 23:06:54 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-06-01 23:06:54 [INFO] Executing Step 0: ValidatePipelineInput
+2024-06-01 23:06:54 [INFO] Executing Step 1: CacheLookup
+2024-06-01 23:06:54 [INFO] Using cached response
+2024-06-01 23:06:54 [INFO] Executing Step 2: PromptGeneration
+2024-06-01 23:06:54 [INFO] Executing Step 2: Skipping...
+2024-06-01 23:06:54 [INFO] Executing Step 3: CodeGenerator
+2024-06-01 23:06:54 [INFO] Executing Step 3: Skipping...
+2024-06-01 23:06:54 [INFO] Executing Step 4: CachePopulation
+2024-06-01 23:06:54 [INFO] Executing Step 4: Skipping...
+2024-06-01 23:06:54 [INFO] Executing Step 5: CodeCleaning
+2024-06-01 23:06:54 [INFO] 
+Code running:
+```
+highest_rating_course = max(dfs[0]['CourseRating'])
+highest_rating_course_name = dfs[0][dfs[0]['CourseRating'] == highest_rating_course]['CourseName'].values[0]
+result = {'type': 'string', 'value': f'The course with the highest rating is: {highest_rating_course_name} with a rating of {highest_rating_course}.'}
+        ```
+2024-06-01 23:06:54 [INFO] Executing Step 6: CodeExecution
+2024-06-01 23:06:54 [INFO] Executing Step 7: ResultValidation
+2024-06-01 23:06:54 [INFO] Answer: {'type': 'string', 'value': 'The course with the highest rating is: AWS Elastic Beanstalk: Build & Deploy a Node.js RESTful API with a rating of 5.0.'}
+2024-06-01 23:06:54 [INFO] Executing Step 8: ResultParsing
+2024-06-01 23:08:14 [INFO] Agent successfully trained on the data
+2024-06-01 23:08:14 [INFO] Question: which is the course with the highest rating
+2024-06-01 23:08:14 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-06-01 23:08:14 [INFO] Prompt ID: 10f8b680-be2b-479b-aed9-6d86548117cf
+2024-06-01 23:08:14 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-06-01 23:08:14 [INFO] Executing Step 0: ValidatePipelineInput
+2024-06-01 23:08:14 [INFO] Executing Step 1: CacheLookup
+2024-06-01 23:08:14 [INFO] Using cached response
+2024-06-01 23:08:14 [INFO] Executing Step 2: PromptGeneration
+2024-06-01 23:08:14 [INFO] Executing Step 2: Skipping...
+2024-06-01 23:08:14 [INFO] Executing Step 3: CodeGenerator
+2024-06-01 23:08:14 [INFO] Executing Step 3: Skipping...
+2024-06-01 23:08:14 [INFO] Executing Step 4: CachePopulation
+2024-06-01 23:08:14 [INFO] Executing Step 4: Skipping...
+2024-06-01 23:08:14 [INFO] Executing Step 5: CodeCleaning
+2024-06-01 23:08:14 [INFO] 
+Code running:
+```
+highest_rating_course = max(dfs[0]['CourseRating'])
+highest_rating_course_name = dfs[0][dfs[0]['CourseRating'] == highest_rating_course]['CourseName'].values[0]
+result = {'type': 'string', 'value': f'The course with the highest rating is: {highest_rating_course_name} with a rating of {highest_rating_course}.'}
+        ```
+2024-06-01 23:08:14 [INFO] Executing Step 6: CodeExecution
+2024-06-01 23:08:14 [INFO] Executing Step 7: ResultValidation
+2024-06-01 23:08:14 [INFO] Answer: {'type': 'string', 'value': 'The course with the highest rating is: AWS Elastic Beanstalk: Build & Deploy a Node.js RESTful API with a rating of 5.0.'}
+2024-06-01 23:08:14 [INFO] Executing Step 8: ResultParsing
