@@ -2,17 +2,6 @@ from services.text2sql import get_connection, QnAWithDuck, QnAWithPanda, table_s
 import streamlit as st
 import pandas as pd
 from sqlalchemy import text
-<<<<<<< HEAD
-
-
-def display_course_grid(df):
-    card_height = 300
-
-    num_columns = 3
-    num_rows = len(df)
-    
-    rows = [df.iloc[i:i + num_columns] for i in range(0, num_rows, num_columns)]
-=======
 import streamlit as st
 import pandas as pd
 import warnings
@@ -43,24 +32,10 @@ def display_course_grid(df):
 
     # status
     show_landing_page = False
->>>>>>> e14947974958d715e5f018393eacc28abbe98ac1
 
     for row in rows:
         cols = st.columns(num_columns)
         for col, (index, item) in zip(cols, row.iterrows()):
-<<<<<<< HEAD
-            col.markdown(f"""
-            <div style="margin-bottom: 20px;">
-                <div style="border: 2px solid #000; padding: 10px; border-radius: 10px; background-color: #fff; height: {card_height}px;">
-                    <h5 style="color: #000;">{item['CourseName']}</h2>
-                    <p style="color: #000;"><strong>Difficulty Level:</strong> {item['DifficultyLevel']}</p>
-                    <p style="color: #000;"><strong>Description:</strong> {item['CourseDescription']}</p>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-
-
-=======
             img_scr = specialized_to_img.get(item['Specialized'], default_img_scr)
             name = item['CourseName'] if len(item['CourseName']) <= 50 else item['CourseName'][:42] + '...'
             with col:
@@ -88,7 +63,6 @@ def display_course_grid(df):
         return
 
     
->>>>>>> e14947974958d715e5f018393eacc28abbe98ac1
 def QnA_SQL(userInput):
     engineSQL = get_connection()
     create_table_query = table_schema("courses", engineSQL)
@@ -96,11 +70,7 @@ def QnA_SQL(userInput):
     df = pd.read_sql_query(sql = text(queryExecutable), con = engineSQL.connect())
     print(df)
     df_pd = df.drop(columns=['CourseURL'])
-<<<<<<< HEAD
-    response = QnAWithPanda(df_pd, userInput)
-=======
     response = QnAWithPanda(df_pd[:100], userInput)
->>>>>>> e14947974958d715e5f018393eacc28abbe98ac1
     print(response)
     # df.to_csv("../df_display/main_screen.csv")
     return df, response
