@@ -29,7 +29,6 @@ Old method
 ```bash
 rasa run --enable-api --cors "*" --debug
 ```
-
 On another termial, execute this 
 ```bash
 streamlit run ui/app.py --server.runOnSave true
