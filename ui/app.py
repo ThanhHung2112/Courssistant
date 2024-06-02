@@ -42,7 +42,6 @@ with st.sidebar:
 # Display chat messages in the sidebar
 with st.sidebar:
     st.header("Chat with Courssistant")
-
     chat_container = st.container()  # Create a container for chat messages
 
     # Display chat messages in reverse order (newest at the bottom)

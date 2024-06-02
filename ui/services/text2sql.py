@@ -55,22 +55,24 @@ def QnAWithDuck(question, schema):
                     stderr=subprocess.PIPE,
                     shell=True)
     promt_input = schema + question + "give me all field of query result"
-    print("ducking")
+    print("Running ollama query generate model")
     out, _ = p.communicate(input=promt_input.encode())
     final_query = out.decode('utf-8').strip()    
     final_query = final_query.split('\n', 1)[0].strip()
-    print(f'get query {final_query} in {time.time() -  current}')
+    print(f'Get Query {final_query} In {time.time() -  current}')
     return final_query
 
 def QnAWithPanda(df, question):
-    os.environ["PANDASAI_API_KEY"] = "$2a$10$lwbP.akrhl.4fXNcDF/oQu5jcUArQwhXCXHNmcoTIYDQAsWEGeHn6"
+    # nên thay = consts
+    os.environ["PANDASAI_API_KEY"] = "$2a$10$YY8apy8Guu3.RaEGR3SDSOyQBmrD.9QU63xQLdZ177v2rNajpKv6W"
     agent = Agent(df)
-    print("training pandas")
+    print("Training pandas")
+
     response_texts = [
-            "Here is your output.",
-            "This is what you've got.",
-            "Here's the result you asked for."
-        ]
+        "Here is your output.",
+        "This is what you've got.",
+        "Here's the result you asked for."
+    ]
 
     error_texts = [
         "Oops! Something went wrong while trying to answer, here is your output.",
@@ -78,33 +80,33 @@ def QnAWithPanda(df, question):
         "Hmm, it seems there was an error, here is your output"
     ]
 
-    try: 
-        agent.train(docs="He is the highest")
-        print("panding")
-        print(response)
-        print(type(response))
+    while True:
+        try:
+            agent.train(docs="He is the highest")
+            print("Pandas training completed")
+            break
+        except Exception as e:
+            print(f"Error during training: {e}. Retrying...")
 
-        response = agent.chat(question)
+    while True:
+        try:
+            response = agent.chat(question)
+            # if "Request failed" in response:
+            #     raise ValueError("Request failed")
+            break
+        except Exception as e:
+            print(f"Error during chat: {e}. Retrying...")
 
-        # while "Request failed" in response:
-        #     print("Raising error, resend request...")
-        #     response = agent.chat(question)
-        
-        if isinstance(response, pd.DataFrame):
-            response_text = random.choice(response_texts)
-
-        elif isinstance(response, str):
-            if "Request failed" in response:
-                response_text = random.choice(error_texts)
-            else:
-                response_text = response
-
-        elif isinstance(response, (int, np.int64, np.integer)):
-            response_text = f"The number of items to search is {str(response)}"
-
-        else:
+    if isinstance(response, pd.DataFrame):
+        response_text = random.choice(response_texts)
+    elif isinstance(response, str):
+        if "Request failed" in response:
             response_text = random.choice(error_texts)
-    except:
+        else:
+            response_text = response
+    elif isinstance(response, (int, np.int64, np.integer)):
+        response_text = f"The number of items to search is {str(response)}"
+    else:
         response_text = random.choice(error_texts)
 
     return response_text
