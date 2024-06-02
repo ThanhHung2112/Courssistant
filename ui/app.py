@@ -3,11 +3,7 @@ import pandas as pd
 import time
 import whisper
 
-from constants.const import set_execute_whisper, get_execute_whisper
-from components.course_grid import QnA_SQL, display_course_grid
-from services.rasa_api import get_rasa_response
-from services.intent_handlers.intent_classify import intent_classification, whisper_intent_classification
-from services.whisper_handler.text2speech import text2speech
+from components.course_grid import display_course_grid
 from services.whisper_handler.speech2text import get_speech_input
 from services.chat.chat_histories import save_chat_history, load_chat_history
 from services.chat.intent_pipeline import process_user_input
@@ -78,5 +74,4 @@ zone = st.empty()
 current = time.time()
 with zone.container():
     print(f"Finished QnA in {time.time() - current} seconds")
-    
     display_course_grid(df[:100])
