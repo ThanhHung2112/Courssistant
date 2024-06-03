@@ -17,7 +17,6 @@ import warnings
 # Suppress the warning about st.experimental_get_query_params being deprecated
 warnings.filterwarnings("ignore", message=".*st.experimental_get_query_params.*", category=FutureWarning)
 
-
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
 

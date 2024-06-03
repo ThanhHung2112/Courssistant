@@ -13,7 +13,7 @@ streamlit/
 # Virtualenv
 venv/
 
-QnA/
+QnA/Question-Answering-SQUAD/data
 
 rasa/models/
 train_intent_classify/models/

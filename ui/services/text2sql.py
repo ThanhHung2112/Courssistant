@@ -3,7 +3,6 @@ import os
 import subprocess
 import time
 from subprocess import Popen, PIPE
-import re
 import random
 import numpy as np
 import pandas as pd
