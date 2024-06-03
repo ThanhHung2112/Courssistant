@@ -13,7 +13,11 @@ streamlit/
 # Virtualenv
 venv/
 
+<<<<<<< HEAD
 QnA/
+=======
+QnA/Question-Answering-SQUAD/data
+>>>>>>> 83a17eac7616327df44403a38326f68d781e3887
 
 rasa/models/
 train_intent_classify/models/
