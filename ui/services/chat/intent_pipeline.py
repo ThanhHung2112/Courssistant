@@ -46,15 +46,14 @@ def process_user_input(chat_container, user_input):
                     full_response += response.get("text", "")
             except:
                 full_response = responses
-
             # text 2 speech
             st.write("whisper_status: ", get_execute_whisper())
-            if get_execute_whisper():
-                text2speech(full_response)
-
             st.session_state.messages.append({"role": "assistant", "content": full_response})
             thinking = st.empty()
             st.write(full_response)
+            if get_execute_whisper():
+                text2speech(full_response)
+
     save_chat_history(st.session_state.messages)
 
     return df
