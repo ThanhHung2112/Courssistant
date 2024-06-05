@@ -7,7 +7,7 @@ from components.course_grid import display_course_grid
 from services.whisper_handler.speech2text import get_speech_input
 from services.chat.chat_histories import save_chat_history, load_chat_history
 from services.chat.intent_pipeline import process_user_input
-
+from constants.global_varient import set_df_display, get_df_display
 import warnings
 
 # Suppress the warning about st.experimental_get_query_params being deprecated
@@ -18,7 +18,6 @@ st.set_page_config(layout="wide")
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
 
-df = pd.read_csv("assistant/data/coursera_main_data.csv")
 # Initialize or load chat history
 if "messages" not in st.session_state:
     st.session_state.messages = load_chat_history()
@@ -56,7 +55,7 @@ with st.sidebar:
         user_input = st.chat_input("How can I help?", key="user_input")
         if user_input:
             df = process_user_input(chat_container, user_input)
-
+            set_df_display(df)
         # Add microphone button
         mic_button = st.button("🎤", key="mic_button")
         if mic_button:
@@ -65,7 +64,7 @@ with st.sidebar:
                 user_input = get_speech_input()
                 if user_input:
                     df = process_user_input(chat_container, user_input)
-
+                    set_df_display(df)
 #----------------------------------------------
 # MAIN PAGE
 st.title("Online Courses")
@@ -73,4 +72,5 @@ zone = st.empty()
 current = time.time()
 with zone.container():
     print(f"Finished QnA in {time.time() - current} seconds")
+    df = get_df_display()
     display_course_grid(df[:100])
