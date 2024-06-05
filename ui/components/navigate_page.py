@@ -26,7 +26,7 @@ def navigate(course, university, level, rate, description, spec, img):
     
     # Navigate to new url
     st.markdown(f'<meta http-equiv="refresh" content="0;URL={url}" />', unsafe_allow_html=True)
-
+    
     # update query prams
     query_params = st.experimental_get_query_params()
     st.experimental_set_query_params(
