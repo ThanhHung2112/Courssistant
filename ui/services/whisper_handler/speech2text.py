@@ -9,7 +9,7 @@ def get_speech_input():
     speechtotext(filename)
     st.success("Processing...")
     audio = whisper.load_audio(filename)
-    result = st.session_state.whisper_model.transcribe(audio)
+    result = st.session_state.whisper_model.transcribe(audio, fp16=False)
     st.session_state.is_listening = False
     return result["text"]
 
