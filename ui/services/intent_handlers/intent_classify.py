@@ -23,9 +23,9 @@ def intent_classification(message):
     # Initialize model
     intent_model = IntentClassifier(roberta_model, num_classes=8)
     # Load model state_dict
-    intent_model.load_state_dict(torch.load(path + '/common_intents/intent_model.pt'))
+    intent_model.load_state_dict(torch.load(path + '/common_intents/intent_model.pt', map_location=torch.device('cpu')))
     # Specify the device (e.g., 'cuda', 'mps' for GPU or 'cpu' for CPU)
-    device = 'mps' if torch.backends.mps.is_available() else 'cpu'
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
     # Predict intent
     predicted_intent = predict_intents(message, intent_model, roberta_tokenizer, intents, device)
     return predicted_intent
@@ -46,9 +46,9 @@ def whisper_intent_classification(message):
     # Initialize model
     intent_model = IntentClassifier(roberta_model, num_classes=5)
     # Load model state_dict
-    intent_model.load_state_dict(torch.load(path + '/whisper_intents/whisper_intent_model.pt'))
+    intent_model.load_state_dict(torch.load(path + '/whisper_intents/whisper_intent_model.pt', map_location=torch.device('cpu')))
     # Specify the device (e.g., 'cuda', 'mps' for GPU or 'cpu' for CPU)
-    device = 'mps' if torch.backends.mps.is_available() else 'cpu'
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
     # Predict intent
     predicted_intent = predict_intents(message, intent_model, roberta_tokenizer, intents, device)
     return predicted_intent
