@@ -1,9 +1,8 @@
 import streamlit as st
 import pandas as pd
-import time
 import whisper
 
-from constants.const import set_execute_whisper, get_execute_whisper
+from constants.global_varient import set_execute_whisper, get_execute_whisper
 from components.course_grid import QnA_SQL, display_course_grid
 from services.rasa_api import get_rasa_response
 from services.intent_handlers.intent_classify import intent_classification, whisper_intent_classification

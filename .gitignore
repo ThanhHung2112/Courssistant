@@ -14,6 +14,8 @@ streamlit/
 venv/
 
 QnA/Question-Answering-SQUAD/data
+QnA/Question-Answering-SQUAD/results
+QnA/
 
 rasa/models/
 train_intent_classify/models/
