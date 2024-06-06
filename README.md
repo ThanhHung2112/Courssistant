@@ -8,6 +8,9 @@ python: 3.9.19
 ## Installation
 ```bash
 pip install -r requirements.txt
+
+conda install -c conda-forge sentencepiece
+
 ```
 
 ## Features

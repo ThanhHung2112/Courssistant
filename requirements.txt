@@ -13,3 +13,4 @@ git+https://github.com/openai/whisper.git
 nltk
 pydub
 sentence-transformers
+skillner

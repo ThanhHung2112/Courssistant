@@ -52,9 +52,9 @@ def display_course_grid(df):
                 # Check for navigation
                 if st.button("Open Page", key=index):
                     show_landing_page = True
-                    navigate(item['CourseName'], item['University'], item['DifficultyLevel'], item['CourseRating'], item['CourseDescription'], item['Specialized'],img_scr)
+                    navigate(item['CourseName'], item['University'], item['DifficultyLevel'], item['CourseRating'], item['CourseDescription'][:500], item['Specialized'], item["Skills"], img_scr)
 
-    # check for current status and navigate
+    # # check for current status and navigate
     if show_landing_page:
         st.experimental_set_query_params(page="landingpage")
         import pages.landingpage
