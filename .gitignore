@@ -25,3 +25,5 @@ ui/models/whisper_intents/
 ui/services/intent_handlers/models
 
 get_token.sh
+
+assistant/data/*
