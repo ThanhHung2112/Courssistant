@@ -72,6 +72,5 @@ def QnA_SQL(userInput):
     df_pd = df.drop(columns=['CourseURL'])
     response = QnAWithPanda(df_pd[:100], userInput)
     print(response)
-    # df.to_csv("../df_display/main_screen.csv")
     return df, response
 

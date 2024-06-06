@@ -14,6 +14,13 @@ import warnings
 warnings.filterwarnings("ignore", message=".*st.experimental_get_query_params.*", category=FutureWarning)
 
 st.set_page_config(layout="wide")
+from constants.global_varient import set_df_display, get_df_display
+import warnings
+
+# Suppress the warning about st.experimental_get_query_params being deprecated
+warnings.filterwarnings("ignore", message=".*st.experimental_get_query_params.*", category=FutureWarning)
+
+st.set_page_config(layout="wide")
 
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
@@ -57,6 +64,8 @@ with st.sidebar:
         if user_input:
             df = process_user_input(chat_container, user_input)
 
+            df = process_user_input(chat_container, user_input)
+            set_df_display(df)
         # Add microphone button
         mic_button = st.button("🎤", key="mic_button")
         if mic_button:
@@ -69,8 +78,11 @@ with st.sidebar:
 #----------------------------------------------
 # MAIN PAGE
 st.title("Online Courses")
+st.title("Online Courses")
 zone = st.empty()
 current = time.time()
 with zone.container():
     print(f"Finished QnA in {time.time() - current} seconds")
+    
+    df = get_df_display()
     display_course_grid(df[:100])
