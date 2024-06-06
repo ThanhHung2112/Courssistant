@@ -25,6 +25,10 @@ warnings.filterwarnings("ignore", message=".*st.experimental_get_query_params.*"
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
 
+<<<<<<< HEAD
+=======
+df = pd.read_csv("assistant/data/coursera_main_data.csv")
+>>>>>>> parent of c7d4ac3 (fix: change data path)
 # Initialize or load chat history
 if "messages" not in st.session_state:
     st.session_state.messages = load_chat_history()
