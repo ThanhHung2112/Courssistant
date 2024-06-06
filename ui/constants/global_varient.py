@@ -10,7 +10,7 @@ def get_execute_whisper():
     return execute_whisper
 
 
-df_display = pd.read_csv("assistant/data/coursera_main_data.csv")
+df_display = pd.read_csv("assistant/data/courssistant_main.csv")
 
 def set_df_display(value):
     global df_display
