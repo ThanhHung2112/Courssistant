@@ -1,12 +1,10 @@
 import streamlit as st
-
+from services.skillner.skill_extract import extract_skills
+from components.course_grid import QnA_SQL
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-
-from components.course_grid import QnA_SQL
-from services.skillner.skill_extract import extract_skills
 
 embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
 
@@ -24,7 +22,7 @@ def course_search_pipeline(user_input):
 
 def vectorsearch(skills):
     # Load the course data
-    df = pd.read_csv("assistant/data/courssistant_main.csv")
+    df = pd.read_csv("assistant/data/coursera_main_data.csv")
 
     # Concatenate all the skills into a single sentence
     skills_sentence = ' '.join(skills)
