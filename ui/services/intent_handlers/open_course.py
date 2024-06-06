@@ -87,8 +87,10 @@ def nearest_course(df, course_name):
     return nn, {'Course': max_similarity_course, "Score": max_similarity_score}
 
 
-def generate_answer(promt: str, user_input: str) -> str:
+def course_name_from_input(user_input: str) -> str:
     # Prepare the input text in the format expected by T5
+    promt = " Can you tell me the name of the course?"
+
     input_text = f"question: {promt} context: {user_input}"
     inputs = t5_tokenizer.encode(input_text, return_tensors="pt", truncation=True)
 
@@ -100,10 +102,3 @@ def generate_answer(promt: str, user_input: str) -> str:
     answer = t5_tokenizer.decode(outputs[0], skip_special_tokens=True)
     return answer
 
-# Example usage
-question = " Can you tell me the name of the course?"
-test_context = "Open the course Write A Feature Length Screenplay"
-
-course_name = generate_answer(question, test_context)
-
-nn, result = nearest_course(pd.read_csv(".\components\df_test.csv"), course_name)
