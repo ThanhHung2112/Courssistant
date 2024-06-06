@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 
-def navigate(course, university, level, rate, description, spec, skills, img):
+def navigate(course, university, level, rate, description, spec, img):
     # store in session
     st.session_state.landing_page_params = {
         "course": course,
@@ -10,7 +10,6 @@ def navigate(course, university, level, rate, description, spec, skills, img):
         "description": description,
         "spec": spec,
         "university": university,
-        "skills": skills,
         "img": img
     }
     
@@ -23,7 +22,6 @@ def navigate(course, university, level, rate, description, spec, skills, img):
     url += f"description={description}&"
     url += f"spec={spec}&"
     url += f"university={university}&"
-    url += f"skills={skills}&"
     url += f"img={img}"
     
     # Navigate to new url
@@ -44,7 +42,7 @@ def navigate(course, university, level, rate, description, spec, skills, img):
 
     if "page" in query_params and query_params["page"][0] == "landingpage":
         # if landingexit --> navigate to landingpage
-        import pages.landingpage 
+        import pages.landingpage
         pages.landingpage  # execute command in landingpage
         st.stop()  
     st.experimental_rerun()
