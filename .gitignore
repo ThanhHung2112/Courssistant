@@ -24,6 +24,9 @@ ui/models/common_intents/
 ui/models/whisper_intents/
 ui/services/intent_handlers/models
 
-get_token.sh
-
+notebooks/skill_db_relax_20.json
+notebooks/token_dist.json
 assistant/data/*
+
+skill_db_relax_20.json
+token_dist.json
