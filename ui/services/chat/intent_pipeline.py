@@ -2,11 +2,12 @@ import streamlit as st
 import pandas as pd
 
 from services.whisper_handler.text2speech import text2speech
-from components.course_grid import QnA_SQL, display_course_grid
-from services.chat.chat_histories import save_chat_history, load_chat_history
+from components.course_grid import QnA_SQL
+from services.chat.chat_histories import save_chat_history
 from services.rasa_api import get_rasa_response
 from services.intent_handlers.intent_classify import intent_classification, whisper_intent_classification
-from constants.const import set_execute_whisper, get_execute_whisper
+from constants.global_varient import set_execute_whisper, get_execute_whisper
+from services.intent_handlers.course_search_intent import course_search_pipeline
 
 USER_AVATAR = "👤"
 BOT_AVATAR = "🤖"
@@ -21,7 +22,7 @@ def process_user_input(chat_container, user_input):
         with st.chat_message("assistant", avatar=BOT_AVATAR):
             thinking = st.write("Thinking ...")
             whisper_intent = whisper_intent_classification(user_input)
-            st.write(whisper_intent)
+            thinking = st.write(whisper_intent)
             if whisper_intent in ["whisper_on", "whisper_off"]:
                 set_execute_whisper(whisper_intent == "whisper_on")
                 responses = f"Whisper is {'on' if get_execute_whisper() else 'off'}"
@@ -30,6 +31,8 @@ def process_user_input(chat_container, user_input):
                 st.write(common_intent)
                 if common_intent.lower() in ["greet", "ask_name", "ask_features", "bot_challenge"]:
                     responses = get_rasa_response(user_input)
+                elif common_intent.lower() == "course_search": 
+                    df, responses = course_search_pipeline(user_input)
                 else:
                     df, responses = QnA_SQL(user_input)
             else:
@@ -38,6 +41,8 @@ def process_user_input(chat_container, user_input):
                 st.write(common_intent)
                 if common_intent.lower() in ["greet", "ask_name", "ask_features", "bot_challenge"]:
                     responses = get_rasa_response(user_input)
+                elif common_intent.lower() == "course_search": 
+                    df, responses = course_search_pipeline(user_input)
                 else:
                     df, responses = QnA_SQL(user_input)
             try:
