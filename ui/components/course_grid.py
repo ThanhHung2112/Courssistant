@@ -69,8 +69,8 @@ def QnA_SQL(userInput):
     queryExecutable = QnAWithDuck(userInput, create_table_query)
     df = pd.read_sql_query(sql = text(queryExecutable), con = engineSQL.connect())
     print(df)
-    df_pd = df.drop(columns=['CourseURL'])
-    response = QnAWithPanda(df_pd[:100], userInput)
+    # df_pd = df.drop(columns=['CourseURL'])
+    response = QnAWithPanda(df[:100], userInput)
     print(response)
     return df, response
 
