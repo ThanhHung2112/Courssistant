@@ -1,5 +1,7 @@
 import torch
-
+import streamlit as st
+from constants.global_varient import get_df_display
+from components.navigate_page import navigate
 from transformers import BertTokenizer, BertModel
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
@@ -79,7 +81,7 @@ def nearest_course(df, course_name):
             neighbor_data = df.iloc[neighbor_index].to_dict()
             similarity_score = cosine_similarity([encoded_course_name], [bert_encoded_matrix[neighbor_index]])[0][0]
             nn.append((neighbor_data, similarity_score))
-            print(f"Course {i + 1}: {neighbor_data['Course Name']} - Similarity: {similarity_score}")
+            print(f"Course {i + 1}: {neighbor_data['CourseName']} - Similarity: {similarity_score}")
 
     max_similarity_index = np.argmax(similarities)
     max_similarity_course = df.iloc[max_similarity_index].to_dict()
@@ -87,8 +89,10 @@ def nearest_course(df, course_name):
     return nn, {'Course': max_similarity_course, "Score": max_similarity_score}
 
 
-def generate_answer(promt: str, user_input: str) -> str:
+def course_name_from_input(user_input: str) -> str:
     # Prepare the input text in the format expected by T5
+    promt = " Can you tell me the name of the course?"
+
     input_text = f"question: {promt} context: {user_input}"
     inputs = t5_tokenizer.encode(input_text, return_tensors="pt", truncation=True)
 
@@ -100,10 +104,18 @@ def generate_answer(promt: str, user_input: str) -> str:
     answer = t5_tokenizer.decode(outputs[0], skip_special_tokens=True)
     return answer
 
-# Example usage
-question = " Can you tell me the name of the course?"
-test_context = "Open the course Write A Feature Length Screenplay"
-
-course_name = generate_answer(question, test_context)
-
-nn, result = nearest_course(pd.read_csv(".\components\df_test.csv"), course_name)
+def open_page_pipeline(user_input):
+    df_display = get_df_display()
+    img_src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN9mLqVjKSSwvlY_o4pTeOKY2oSpbQYDFcjw&s"
+    nn, result = nearest_course(df_display, course_name_from_input(user_input))
+    result = result["Course"]
+    
+    navigate(result['CourseName'], result['University'], 
+                result['DifficultyLevel'], result['CourseRating'], result['CourseDescription'],
+                result['Specialized'], result['Skills'], img_src)
+    st.experimental_set_query_params(page="landingpage")
+    import pages.landingpage
+    pages.landingpage 
+    st.stop()
+    responses = "Your page is opened"
+    return df ,responses

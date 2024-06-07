@@ -9,6 +9,7 @@ from services.intent_handlers.intent_classify import intent_classification, whis
 from constants.global_varient import set_execute_whisper, get_execute_whisper
 from services.intent_handlers.course_search_intent import course_search_pipeline
 from services.intent_handlers.description_intent import description_pipeline
+from services.intent_handlers.open_course import open_page_pipeline
 
 
 USER_AVATAR = "👤"
@@ -37,6 +38,8 @@ def process_user_input(chat_container, user_input):
                     df, responses = course_search_pipeline(user_input)
                 elif common_intent.lower() == "description": 
                     df, responses = description_pipeline(user_input)
+                elif common_intent.lower() == "open_landingpage": 
+                    df, responses = open_page_pipeline(user_input)
                 else:
                     df, responses = QnA_SQL(user_input)
             else:
@@ -49,6 +52,10 @@ def process_user_input(chat_container, user_input):
                     df, responses = course_search_pipeline(user_input)
                 elif common_intent.lower() == "description": 
                     df, responses = description_pipeline(user_input)
+                elif common_intent.lower() == "open_landingpage": 
+                    df, responses = open_page_pipeline(user_input)
+                elif common_intent.lower() == "negative": 
+                    responses = open_page_pipeline(user_input)
                 else:
                     df, responses = QnA_SQL(user_input)
             try:

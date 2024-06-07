@@ -24,9 +24,12 @@ def display_course_grid(df):
         "Physical Science and Engineering": "https://online.stanford.edu/sites/default/files/styles/widescreen_tiny/public/2018-03/statisticalmethodsinengineeringphysicalsciences_stats110.jpg?h=66807ab2&itok=WB8u3wVd",
         "Health": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKZV0wIBeCLosu94-ACwliQWEHmccPIrFE87KYKeWHsM-Y2yuow-qaVdBr1LYQGdkjWHE&usqp=CAU",
         "Data Science": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2bj684ua5xtkrYixfQ4vm9sF4k9qP9vT3cPNvUTkH-cxDo1JW9gmp9LKJBaYKz0OQDNs&usqp=CAU",
-        "Computer Science": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6HsC6k3h5C2pzM9GYlnyX2N9ziSWiE2fqgA&s"
+        "Computer Science": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6HsC6k3h5C2pzM9GYlnyX2N9ziSWiE2fqgA&s",
+        # "Social Sciences" :
+        # "Language Learning":
+        # "Personal Development":
+        # "Math and logic":
     }
-
     # Default image URL
     default_img_scr = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN9mLqVjKSSwvlY_o4pTeOKY2oSpbQYDFcjw&s"
 
@@ -54,13 +57,13 @@ def display_course_grid(df):
                     show_landing_page = True
                     navigate(item['CourseName'], item['University'], item['DifficultyLevel'], item['CourseRating'], item['CourseDescription'][:500], item['Specialized'], item["Skills"], img_scr)
 
-    # # check for current status and navigate
-    if show_landing_page:
-        st.experimental_set_query_params(page="landingpage")
-        import pages.landingpage
-        pages.landingpage 
-        st.stop() 
-        return
+    # # # check for current status and navigate
+    # if show_landing_page:
+    #     st.experimental_set_query_params(page="landingpage")
+    #     import pages.landingpage
+    #     pages.landingpage 
+    #     st.stop() 
+    #     return
 
     
 def QnA_SQL(userInput):
