@@ -1,11 +1,14 @@
 import streamlit as st
 import pandas as pd
+from constants.global_varient import get_df_display
 
 from services.whisper_handler.text2speech import text2speech
 from components.course_grid import QnA_SQL
+from components.navigate_page import navigate
 from services.chat.chat_histories import save_chat_history
 from services.rasa_api import get_rasa_response
 from services.intent_handlers.intent_classify import intent_classification, whisper_intent_classification
+from services.intent_handlers.open_course import course_name_from_input, nearest_course
 from constants.global_varient import set_execute_whisper, get_execute_whisper
 from services.intent_handlers.course_search_intent import course_search_pipeline
 from services.intent_handlers.description_intent import description_pipeline
@@ -17,7 +20,7 @@ BOT_AVATAR = "🤖"
 
 # Function to process user input
 def process_user_input(chat_container, user_input):
-    df = pd.read_csv("assistant/data/coursera_main_data.csv")
+    df = pd.read_csv("assistant/data/courssistant_main.csv")
     st.session_state.messages.append({"role": "user", "content": user_input})
     with chat_container:
         with st.chat_message("user", avatar=USER_AVATAR):
@@ -42,6 +45,18 @@ def process_user_input(chat_container, user_input):
                     df, responses = open_page_pipeline(user_input)
                 elif common_intent.lower() == "negative": 
                     responses = "Sorry I'm able to support your question yet"
+                elif common_intent.lower() == "open_landingpage":
+                    df_display = get_df_display()
+                    img_src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN9mLqVjKSSwvlY_o4pTeOKY2oSpbQYDFcjw&s"
+                    nn, result = nearest_course(df_display, course_name_from_input(user_input))
+                    print(result)
+                    navigate(result['Course']['CourseName'], result['Course']['University'], 
+                                result['Course']['DifficultyLevel'], result['Course']['CourseRating'], result['Course']['CourseDescription'][:1000],
+                                result['Course']['Specialized'],img_src)
+                    st.experimental_set_query_params(page="landingpage")
+                    import pages.landingpage
+                    pages.landingpage 
+                    st.stop()
                 else:
                     df, responses = QnA_SQL(user_input)
             else:
@@ -52,12 +67,17 @@ def process_user_input(chat_container, user_input):
                     responses = get_rasa_response(user_input)
                 elif common_intent.lower() == "course_search": 
                     df, responses = course_search_pipeline(user_input)
-                elif common_intent.lower() == "description": 
-                    df, responses = description_pipeline(user_input)
                 elif common_intent.lower() == "open_landingpage": 
-                    df, responses = open_page_pipeline(user_input)
-                elif common_intent.lower() == "negative": 
-                    responses = "Sorry I'm able to support your question yet"
+                    df_display = get_df_display()
+                    img_src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN9mLqVjKSSwvlY_o4pTeOKY2oSpbQYDFcjw&s"
+                    nn, result = nearest_course(df_display, course_name_from_input(user_input))
+                    navigate(result['CourseName'], result['University'], 
+                             result['DifficultyLevel'], result['CourseRating'], result['CourseDescription'],
+                               result['Specialized'],img_src)
+                    st.experimental_set_query_params(page="landingpage")
+                    import pages.landingpage
+                    pages.landingpage 
+                    st.stop()
                 else:
                     df, responses = QnA_SQL(user_input)
             try:

@@ -90,7 +90,10 @@ def nearest_course(df, course_name):
 
 
 def course_name_from_input(user_input: str) -> str:
+def course_name_from_input(user_input: str) -> str:
     # Prepare the input text in the format expected by T5
+    promt = " Can you tell me the name of the course?"
+
     promt = " Can you tell me the name of the course?"
 
     input_text = f"question: {promt} context: {user_input}"
