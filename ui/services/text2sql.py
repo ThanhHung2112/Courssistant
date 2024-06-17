@@ -8,11 +8,17 @@ import numpy as np
 import pandas as pd
 from pandasai import Agent
 from pandasai.llm import OpenAI
-
+import streamlit as st
+# def get_connection():
+#     return create_engine(
+#         url="mysql+pymysql://{0}:{1}@{2}:{3}/{4}".format(
+#             "root", "", "localhost", "3306", "duck_demo"
+#         )
+#     )
 def get_connection():
     return create_engine(
         url="mysql+pymysql://{0}:{1}@{2}:{3}/{4}".format(
-            "root", "", "localhost", "3306", "duck_demo"
+            "root", "", "0.tcp.ap.ngrok.io", "10117", "courssistant"
         )
     )
 
@@ -59,6 +65,7 @@ def QnAWithDuck(question, schema):
     final_query = out.decode('utf-8').strip()    
     final_query = final_query.split('\n', 1)[0].strip()
     print(f'Get Query {final_query} In {time.time() -  current}')
+    st.write(final_query)
     return final_query
 
 def QnAWithPanda(df, question):

@@ -24,7 +24,7 @@ conda install -c conda-forge sentencepiece
   <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/homepage1.png" alt="Home Page 1">
 </p>
 
-
+export PATH=/opt/homebrew/bin:$PATH
 
 ## Run
 Old method 

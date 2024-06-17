@@ -40,6 +40,8 @@ def process_user_input(chat_container, user_input):
                     df, responses = description_pipeline(user_input)
                 elif common_intent.lower() == "open_landingpage": 
                     df, responses = open_page_pipeline(user_input)
+                elif common_intent.lower() == "negative": 
+                    responses = "Sorry I'm able to support your question yet"
                 else:
                     df, responses = QnA_SQL(user_input)
             else:
@@ -55,7 +57,7 @@ def process_user_input(chat_container, user_input):
                 elif common_intent.lower() == "open_landingpage": 
                     df, responses = open_page_pipeline(user_input)
                 elif common_intent.lower() == "negative": 
-                    responses = open_page_pipeline(user_input)
+                    responses = "Sorry I'm able to support your question yet"
                 else:
                     df, responses = QnA_SQL(user_input)
             try:

@@ -24,7 +24,7 @@ def course_search_pipeline(user_input):
 
 def vectorsearch(skills):
     # Load the course data
-    df = pd.read_csv("assistant/data/coursera_main_data.csv")
+    df = pd.read_csv("assistant/data/courssistant_main.csv")
 
     # Concatenate all the skills into a single sentence
     skills_sentence = ' '.join(skills)

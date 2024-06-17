@@ -54,7 +54,7 @@ def encode_sequence_with_bert(sequence):
 def nearest_course(df, course_name):
     # Tiền xử lý và mã hoá câu mới với BERT
     encoded_course_name = encode_sequence_with_bert(course_name)
-
+    print(df.columns)
     # Chuyển đổi chuỗi số thực từ cột BERT_Encoded thành ma trận 2D
     bert_encoded_matrix = df['Course_Name_Encoded'].apply(lambda x: np.fromstring(x[1:-1], sep=' '))
     bert_encoded_matrix = np.vstack(bert_encoded_matrix)
