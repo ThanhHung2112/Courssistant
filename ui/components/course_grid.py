@@ -1,4 +1,4 @@
-from services.text2sql import get_connection, QnAWithDuck, QnAWithPanda, table_schema
+from services.text_to_sql.text2sql import get_connection, QnAWithDuck, QnAWithPanda, table_schema
 import streamlit as st
 import pandas as pd
 from sqlalchemy import text

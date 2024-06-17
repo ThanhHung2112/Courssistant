@@ -6,7 +6,7 @@ from services.whisper_handler.text2speech import text2speech
 from components.course_grid import QnA_SQL
 from components.navigate_page import navigate
 from services.chat.chat_histories import save_chat_history
-from services.rasa_api import get_rasa_response
+from services.chat.rasa_api import get_rasa_response
 from services.intent_handlers.intent_classify import intent_classification, whisper_intent_classification
 from services.intent_handlers.open_course import course_name_from_input, nearest_course
 from constants.global_varient import set_execute_whisper, get_execute_whisper
