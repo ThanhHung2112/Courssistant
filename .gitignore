@@ -7,8 +7,8 @@ __pycache__/
 # Streamlit
 streamlit/
 
-# # Environments
-# .env
+# Environments
+.env
 
 # Virtualenv
 venv/
