@@ -83,6 +83,6 @@ zone = st.empty()
 current = time.time()
 with zone.container():
     print(f"Finished QnA in {time.time() - current} seconds")
-    
+
     df = get_df_display()
     display_course_grid(df[:100])
