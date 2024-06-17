@@ -8,6 +8,11 @@ import numpy as np
 import pandas as pd
 from pandasai import Agent
 from pandasai.llm import OpenAI
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 def get_connection():
     return create_engine(
@@ -62,8 +67,12 @@ def QnAWithDuck(question, schema):
     return final_query
 
 def QnAWithPanda(df, question):
-    # nên thay = consts
-    os.environ["PANDASAI_API_KEY"] = "$2a$10$YY8apy8Guu3.RaEGR3SDSOyQBmrD.9QU63xQLdZ177v2rNajpKv6W"
+
+    api_key = os.getenv("PANDASAI_KEY")
+    if not api_key:
+        raise ValueError("PANDASAI_KEY is not set in the environment variables.")
+    os.environ["PANDASAI_API_KEY"] = api_key
+
     agent = Agent(df)
     print("Training pandas")
 
