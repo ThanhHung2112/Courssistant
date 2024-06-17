@@ -49,6 +49,6 @@ python main.py
 ## System flow
 
 <p align="center">
-  <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/system_flows.jpg" alt="Home Page 1">
+  <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/system_flow.jpg" alt="Home Page 1">
 </p>
 
