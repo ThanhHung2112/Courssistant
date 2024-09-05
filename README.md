@@ -1,4 +1,4 @@
-# Courssistant
+![image](https://github.com/user-attachments/assets/76e526f7-d64d-4b87-ac8f-e5010c054b02)# Courssistant
 **Courssistant** (Course - Assistant) is an innovative chatbot designed to support users on an online education platform by initially focusing on essential features. It aims to assist users in navigating the platform effectively, providing foundational support such as course discovery, policy clarification, and basic information retrieval.
 
 Initially, Courssistant will prioritize functionalities like guiding users through course selection based on their preferences and skill levels. It will also handle queries related to platform policies and provide clear explanations on course content.
@@ -61,15 +61,6 @@ python main.py
   <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/homepage1.png" alt="Home Page 1">
 </p>
 
-
-> LandingPage
-
-> Course Search Features
-
-> Frequency Chat Features
-
-> Open  LandingPage using voice
-
 ## Flow
 
 <p align="center">
@@ -86,15 +77,31 @@ python main.py
 
 ### Intent Classification Datasets
 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
+The dataset can be found at [Kaggle | Intents Dataset for Chatbot](https://www.kaggle.com/datasets/leewanhung/intents-dataset-for-chatbot)
+- Whisper on
+- Whisper off
+- Open landing page
+- Course search
+- Course description
+- Greet
+- Feature Introduction
+- Ask Name
+- Bot Challenges
+- Negative
 
 ### Coursera Dataset
 
+Dataset of online course on Coursera contain courses information and fake history enrolled course of students, this is an important material to contruct the models
 
+The data can be found on [Kaggle | Coursera Dataset](https://www.kaggle.com/datasets/leewanhung/coursera-dataset)
+<!-- 
+> LandingPage
+
+> Course Search Features
+
+> Frequency Chat Features
+
+
+> Open LandingPage using voice
+-->
 
