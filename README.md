@@ -7,22 +7,6 @@ Future enhancements will include advanced capabilities such as answering assignm
 
 By focusing on foundational features first, Courssistant aims to establish a reliable and user-friendly support system that evolves with user needs and advances in educational technology.
 
-# System Requirements:
-
-- XAMPP: 8.0.30
-- python: 3.9.19
-- [Ollama](!https://www.ollama.com/download)
-
-## Installation
-
-1. Start XAMPP and import `duck_demo.sql` to your MySQL database
-2. Download and setup [Ollama](!https://www.ollama.com/download) in your computer
-3. Install dependences
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Current Features
 
 - Frequency Question Answering
@@ -32,26 +16,6 @@ pip install -r requirements.txt
   - Find course follows skills contain in course that indeed for user
   - Find course using deep understand passengers intents 
 - Site interaction : Navigate to any course using voice
-
-
-## Run
-
-### Solution 1
-
-```bash
-rasa run --enable-api --cors "*" --debug
-```
-On another termial, execute this 
-```bash
-streamlit run ui/app.py --server.runOnSave true
-```
-
-### Solution 2: 🎉 supper easy :>
-
-```bash
-python main.py
-```
-
 
 ## User Interface
 
@@ -72,6 +36,40 @@ python main.py
 <p align="center">
   <img src="https://github.com/ThanhHung2112/Courssistant/blob/main/assests/system_flow.png" alt="Home Page 1">
 </p>
+
+# System Requirements:
+
+- XAMPP: 8.0.30
+- python: 3.9.19
+- [Ollama](!https://www.ollama.com/download)
+
+## Installation
+
+1. Start XAMPP and import `duck_demo.sql` to your MySQL database
+2. Download and setup [Ollama](!https://www.ollama.com/download) in your computer
+3. Install dependences
+
+```bash
+pip install -r requirements.txt
+```
+
+## Run
+
+### Solution 1
+
+```bash
+rasa run --enable-api --cors "*" --debug
+```
+On another termial, execute this 
+```bash
+streamlit run ui/app.py --server.runOnSave true
+```
+
+### Solution 2: 🎉 supper easy :>
+
+```bash
+python main.py
+```
 
 ## Datasets
 
