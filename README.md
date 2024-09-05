@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/76e526f7-d64d-4b87-ac8f-e5010c054b02)# Courssistant
+# Courssistant
 **Courssistant** (Course - Assistant) is an innovative chatbot designed to support users on an online education platform by initially focusing on essential features. It aims to assist users in navigating the platform effectively, providing foundational support such as course discovery, policy clarification, and basic information retrieval.
 
 Initially, Courssistant will prioritize functionalities like guiding users through course selection based on their preferences and skill levels. It will also handle queries related to platform policies and provide clear explanations on course content.
